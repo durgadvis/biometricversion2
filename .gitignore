@@ -5,6 +5,7 @@
 
 # Package Files #
 *.jar
+!libs/*.jar
 *.war
 *.ear
 
@@ -18,3 +19,4 @@ hs_err_pid*
 target
 
 apache-tomcat-7.0.72
+.idea/

@@ -14,13 +14,11 @@
     <title>Bio Metric</title>
 
     <!-- Bootstrap core CSS -->
-     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/font-awesome.min.css"/>" rel="stylesheet">
-
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -44,13 +42,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">BIOMETRICSHOPPING</a>
+          <a class="navbar-brand" href="index.html">BIOMETRIC SHOPPING</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="/biometric-1/mydetails">MyDetails</a></li>
-            <li><a href="#works">MoreInfo</a></li>
+            <li class=""><a href="/biometric-1">Home</a></li>
+            <li class=""><a href="/biometric-1/user/newUser">New User</a></li>
+            <li class=""><a href="/biometric-1/user">Shop</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -61,37 +59,9 @@
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-lg-offset-3">
-<form:form method="POST" action="/biometric-1/addUser" modelAttribute="userDetail">
-   <table>
-    <tr>
-        <td><form:label path="user_id">UserId</form:label></td>
-        <td><form:input path="user_id" /></td>
-    </tr>
-    <tr>
-        <td><form:label path="firstName">First Name</form:label></td>
-        <td><form:input path="firstName" /></td>
-    </tr>
-    <tr>
-        <td><form:label path="fingerPrint">Scanner fingerPrint</form:label></td>
-        <td><form:input path="fingerPrint" /></td>
-    </tr>
-    <tr>
-        <td><form:label path="phonenumber">Phone number</form:label></td>
-        <td><form:input path="phonenumber" /></td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <input type="submit" class="submit_buttom btn btn-mg" value="Submit"/>
-        </td>
-    </tr>
-</table>  
-</form:form>
+                    <h2> Hi Folks !!! Welcome to BIOMETRIC Based shopping </h2>
+                    <h2> Have a good Day :)</h2>
 				</div>
-				<div class="col-lg-3 col-lg-offset-3">
-					<button class="submit_buttom btn btn-mg" id="fingerscanner">Scan Finger</button>
-    				<div id="response"></div>
-				</div>
-				
 			</div><! --/row -->
 	    </div> <!-- /container -->
 	</div><! --/headerwrap -->
@@ -146,7 +116,7 @@
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-   <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/resources/js/biometric.home.js"/>"></script>
