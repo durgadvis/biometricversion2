@@ -33,7 +33,7 @@
   <body>
 
     <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -48,7 +48,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class=""><a href="/biometric-1">Home</a></li>
             <li class=""><a href="/biometric-1/user/newUser">New User</a></li>
-            <li class=""><a href="/biometric-1/user">Shop</a></li>
+            <li class=""><a href="/biometric-1/shopPage">Shop</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -58,7 +58,7 @@
 	<div id="headerwrap">
 	    <div class="container">
 			<div class="row">
-				<div class="col-lg-6 col-lg-offset-3">
+				<div class="col-lg-6 col-lg-offset-3 textfont">
                     <h2> Hi Folks !!! Welcome to BIOMETRIC Based shopping </h2>
                     <h2> Have a good Day :)</h2>
 				</div>

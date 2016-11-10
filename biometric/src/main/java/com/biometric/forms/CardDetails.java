@@ -1,5 +1,7 @@
 package com.biometric.forms;
 
+import javax.smartcardio.Card;
+
 /**
  * Created by suvp on 11/7/2016.
  */
@@ -20,6 +22,12 @@ public class CardDetails {
         this.expiryDate =aInExpiryDate;
         this.bankName =aInBankName;
         this.fk =aInFk;
+    }
+
+    public CardDetails(String aInNameOnCard, String aInCardNumber,String aInExpiryDate ){
+        this.nameOnCard =aInNameOnCard;
+        this.cardNumber =aInCardNumber;
+        this.expiryDate =aInExpiryDate;
     }
 
     public CardDetails(){

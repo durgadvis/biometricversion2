@@ -33,7 +33,7 @@
   <body>
 
     <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">BIOMETRICSHOPPING</a>
+          <a class="navbar-brand" href="index.html">BIOMETRIC SHOPPING</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -54,27 +54,35 @@
       </div>
     </div>
 
-
 	<div id="headerwrap">
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-lg-offset-3">
-					<div class="col-lg-6 col-lg-offset-6">
-					<button class="submit_buttom btn btn-mg" id="scannerandgetdetails">Scan Fingerdfsd</button>
-    				<div id="response"></div>
-
-    				<form method="get" action="/biometric-1/user">
-                       <button class="submit_buttom btn btn-mg" type="submit">Match</button>
-                    </form>
-				</div>
+				         <h2>Hi ${userDetail.name} please select any of the below card</h2>
+                         <c:forEach var="arr" items="${userDetail.listCardDetails}">
+                             <table class="table table-bordered textfont">
+                                <tr>
+                                    <td> Card Number  </td>
+                                    <td> ${arr.cardNumber}</td>
+                                </tr>
+                                <tr>
+                                    <td> Name on the card </td>
+                                    <td> ${arr.nameOnCard}</td>
+                                </tr>
+                                <tr>
+                                    <td> Expire Date </td>
+                                    <td> ${arr.expiryDate}</td>
+                                </tr>
+                            </table>
+						</c:forEach>
 				</div>
 			</div><! --/row -->
 	    </div> <!-- /container -->
 	</div><! --/headerwrap -->
-	
+
 	<section id="works"></section>
-	
-	
+
+
 	<div id="social">
 		<div class="container">
 			<div class="row centered">
@@ -96,7 +104,7 @@
 				<div class="col-lg-2">
 					<a href="#"><i class="fa fa-tumblr"></i></a>
 				</div>
-			
+
 			</div><! --/row -->
 		</div><! --/container -->
 	</div><! --/social -->
@@ -107,7 +115,7 @@
 				<div class="col-lg-4">
 					<p><b>WEB DESIGNER, DEVELOPER & GAME ADDICT</b></p>
 				</div>
-			
+
 				<div class="col-lg-4">
 					<p>Living in the amazing London.</p>
 				</div>
@@ -117,7 +125,7 @@
 			</div>
 		</div>
 	</div><! --/footerwrap -->
-	
+
 
 
     <!-- Bootstrap core JavaScript

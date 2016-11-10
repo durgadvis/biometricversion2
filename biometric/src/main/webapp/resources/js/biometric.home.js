@@ -13,7 +13,7 @@ $(document).ready(function () {
 
 
 
-	$("#fingerscanner").click(function(e) {
+/*	$("#fingerscanner").click(function(e) {
     		$.ajax({
                 type : "GET",
     			contentType: "application/json",
@@ -30,5 +30,22 @@ $(document).ready(function () {
                     }
             });
     	    return false;
-    	});
+    	});*/
+
+
+
+    	var rowcount=0;
+        	$(document).on('click',"input.add_card",function(e){
+        			 rowcount = rowcount + 1;
+                   	var tr    = $(this).closest('#rowOfCardDetails');
+        			console.log(tr);
+        			var clone_obj = tr.clone();
+        			console.log(clone_obj);
+        			clone_obj.find(':text').val('');
+        			tr.after(clone_obj);
+        			clone_obj.find("input").each(function(){
+
+        				$(this).attr('name', $(this).attr('name').replace("listCardDetails[0]", "listCardDetails["+ rowcount +"]"));
+        			});
+              });
 });

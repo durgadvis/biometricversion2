@@ -1,5 +1,6 @@
 package com.biometric.controller;
 
+import com.biometric.forms.CardDetails;
 import com.biometric.forms.User;
 import com.biometric.util.Util;
 import mmm.cogent.fpCaptureApi.CapturedImageData;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.biometric.forms.UserDetails;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,6 +28,11 @@ public class MyDetails {
 	@RequestMapping(value="/mydetails", method=RequestMethod.GET)
 	public ModelAndView getDetailsBasedOnFingerPrint(Model model){
 		return new ModelAndView("mydetails");
+	}
+
+	@RequestMapping(value="/shopPage", method=RequestMethod.GET)
+	public ModelAndView getShopPage(Model model){
+		return new ModelAndView("shopPage");
 	}
 	
 	@ResponseBody
@@ -42,19 +49,25 @@ public class MyDetails {
 	}
 
 	@RequestMapping(value="/user", method=RequestMethod.GET)
-	public ModelAndView getDetailsOnScan(Model aInModel){
-		log.info(">GetUserDetails1");
+	public ModelAndView getDetailsOnScan(){
+		log.info("> getDetailsOnScan");
 		MMMCogentCSD200DeviceImpl aInDevice = new MMMCogentCSD200DeviceImpl();
 		CapturedImageData lCapturedImage  = Util.captureFingerPrint(true, aInDevice);
 		User lMatchedUser = findMatchingUser(aInDevice, lCapturedImage);
+		ModelAndView model = new ModelAndView("cardDetails");
 
 		if(lMatchedUser != null){
-			aInModel.addAttribute("userDetail", lMatchedUser);
+			/*aInModel.addAttribute("name", lMatchedUser.getName());
+			aInModel.addAttribute("userDetail", lMatchedUser);*/
+			model.addObject("userDetail", lMatchedUser);
 		}else{
-			aInModel.addAttribute("userDetail", new User());
+			/*aInModel.addAttribute("name", "not Found");
+			aInModel.addAttribute("userDetail", new User());*/
+			model.addObject("userDetail", new User());
 		}
-		log.info("< GetUserDetails1");
-		return new ModelAndView("NewUser", "message", aInModel);
+		log.info("< getDetailsOnScan");
+		//return new ModelAndView("cardDetails", "message", aInModel);
+		return model;
 	}
 
 	private User findMatchingUser(MMMCogentCSD200DeviceImpl aInDevice, CapturedImageData aInReferenceData){
@@ -91,6 +104,19 @@ public class MyDetails {
 				if(lIsMatchFound){
 					log.trace("Match Found");
 					$RetMatchedUser = getMatchedUser(rs);
+					query = "select card.cardNumber, card.nameOnCard, card.expiryDate, user.pk, user.name from biometric.userdetails as user , biometric.carddetails as card where user.pk=card.fk and user.pk="+$RetMatchedUser.getPk();
+					log.trace("Executing the query:"+query);
+					ResultSet rsCard = lStatement.executeQuery(query);
+					List<CardDetails> lCardDetails = new ArrayList<>();
+					while (rsCard.next())
+					{
+						String lCardNumber = rsCard.getString("cardNumber");
+						String lNameOnCard = rsCard.getString("nameOnCard");
+						String lExpiryDate = rsCard.getString("expiryDate");
+						lCardDetails.add(new CardDetails(lCardNumber, lNameOnCard, lExpiryDate));
+						log.trace("Adding Card with Card Number:"+lCardNumber);
+					}
+					$RetMatchedUser.setListCardDetails(lCardDetails);
 					break;
 				}else{
 					log.trace("Not Matching");
@@ -125,6 +151,8 @@ public class MyDetails {
 		$retUser.setAge(aInRs.getInt("age"));
 		$retUser.setEmailId(aInRs.getString("emailId"));
 		$retUser.setPhonenumber(aInRs.getLong("phoneNumber"));
+		$retUser.setPk(aInRs.getInt("pk"));
+		$retUser.setName(aInRs.getString("name"));
 		return $retUser;
 	}
 }

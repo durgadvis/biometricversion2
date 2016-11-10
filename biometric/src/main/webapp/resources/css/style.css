@@ -69,7 +69,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 700;
-    color: #4a4a4a;
+    color: #ebccd1;
 }
 
 
@@ -109,7 +109,7 @@ h1, h2, h3, h4, h5, h6 {
 	background-position: center center;
 	min-height: 650px;
 	width: 100%;
-	
+
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;
@@ -161,7 +161,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-left: 10px;
 }
 
-#workwrap {	
+#workwrap {
 	background: url(../img/work.jpg) no-repeat center top;
 	margin-top: -70px;
 	padding-top: 250px;
@@ -170,7 +170,7 @@ h1, h2, h3, h4, h5, h6 {
 	background-position: center center;
 	min-height: 650px;
 	width: 100%;
-	
+
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;
@@ -196,7 +196,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: #ffffff
 }
 
-#aboutwrap {	
+#aboutwrap {
 	background: url(../img/about.jpg) no-repeat center top;
 	margin-top: -70px;
 	padding-top: 250px;
@@ -205,7 +205,7 @@ h1, h2, h3, h4, h5, h6 {
 	background-position: center center;
 	min-height: 550px;
 	width: 100%;
-	
+
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;
@@ -237,4 +237,13 @@ td{
 	float: right;
     background-color: #d6bfcc;
     color: #141414;
+}
+
+.textfont{
+	color : #ebccd1;
+
+}
+.buttonfonts{
+	height: 42px;
+    width: 213px;
 }

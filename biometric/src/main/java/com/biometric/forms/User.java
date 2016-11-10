@@ -1,6 +1,7 @@
 package com.biometric.forms;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by suvp on 11/7/2016.
@@ -15,6 +16,10 @@ public class User implements Serializable{
     private byte[] fgIso;
     private byte[] fgBmp;
 
+
+
+    private List<CardDetails> listCardDetails;
+
     private int pk;
 
     public User(){}
@@ -28,6 +33,15 @@ public class User implements Serializable{
         this.fgIso =aInFgIso;
         this.fgBmp =aInFgBmp;
     }
+
+    public List<CardDetails> getListCardDetails() {
+        return listCardDetails;
+    }
+
+    public void setListCardDetails(List<CardDetails> listCardDetails) {
+        this.listCardDetails = listCardDetails;
+    }
+
     public String getName() {
         return name;
     }
