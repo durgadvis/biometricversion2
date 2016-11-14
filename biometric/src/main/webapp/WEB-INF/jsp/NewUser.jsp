@@ -160,22 +160,22 @@
 		</div><! --/container -->
 	</div><! --/social -->
 
-	<div id="footerwrap">
-		<div class="container">
-			<div class="row centered">
-				<div class="col-lg-4">
-					<p><b>WEB DESIGNER, DEVELOPER & GAME ADDICT</b></p>
-				</div>
-			
-				<div class="col-lg-4">
-					<p>Living in the amazing London.</p>
-				</div>
-				<div class="col-lg-4">
-					<p>hello@instant.com</p>
-				</div>
-			</div>
-		</div>
-	</div><! --/footerwrap -->
+		<div id="footerwrap">
+    		<div class="container">
+    			<div class="row centered">
+    				<div class="col-lg-4">
+    					<p><b>BioMetric SHOPPING</b></p>
+    				</div>
+
+    				<div class="col-lg-4">
+    					<p>From Nokia Folks</p>
+    				</div>
+    				<div class="col-lg-4">
+    					<p>Nokia.com</p>
+    				</div>
+    			</div>
+    		</div>
+    	</div><! --/footerwrap -->
 	
 
 

@@ -113,14 +113,14 @@
 		<div class="container">
 			<div class="row centered">
 				<div class="col-lg-4">
-					<p><b>WEB DESIGNER, DEVELOPER & GAME ADDICT</b></p>
+					<p><b>BioMetric SHOPPING</b></p>
 				</div>
 
 				<div class="col-lg-4">
-					<p>Living in the amazing London.</p>
+					<p>From Nokia Folks</p>
 				</div>
 				<div class="col-lg-4">
-					<p>hello@instant.com</p>
+					<p>Nokia.com</p>
 				</div>
 			</div>
 		</div>
