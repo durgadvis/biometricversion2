@@ -1,6 +1,5 @@
 package com.biometric.util;
 
-import com.biometric.controller.MyDetails;
 import mmm.cogent.fpCaptureApi.CapturedImageData;
 import mmm.cogent.fpCaptureApi.MMMCogentCSD200DeviceImpl;
 import org.slf4j.Logger;
@@ -10,7 +9,7 @@ import org.slf4j.LoggerFactory;
  * Created by suvp on 11/7/2016.
  */
 public class Util {
-    private static final Logger log = LoggerFactory.getLogger(MyDetails.class);
+    private static final Logger log = LoggerFactory.getLogger(Util.class);
     
     public static CapturedImageData captureFingerPrint(Boolean aInShouldDenit, MMMCogentCSD200DeviceImpl aInDevice){
         log.info("Started Capturing Image");

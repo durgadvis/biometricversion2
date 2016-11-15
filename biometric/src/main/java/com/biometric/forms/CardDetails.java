@@ -1,5 +1,7 @@
 package com.biometric.forms;
 
+import com.biometric.util.BankNames;
+
 import javax.smartcardio.Card;
 
 /**
@@ -12,10 +14,10 @@ public class CardDetails {
     private String cardNumber;
     private int cvv;
     private String expiryDate;
-    private String bankName;
+    private BankNames bankName;
     private int fk;
 
-    public CardDetails(String aInNameOnCard, String aInCardNumber, int aInCvv, String aInExpiryDate, String aInBankName, int aInFk){
+    public CardDetails(String aInNameOnCard, String aInCardNumber, int aInCvv, String aInExpiryDate, BankNames aInBankName, int aInFk){
         this.nameOnCard =aInNameOnCard;
         this.cardNumber =aInCardNumber;
         this.cvv =aInCvv;
@@ -83,11 +85,11 @@ public class CardDetails {
         this.expiryDate = expiryDate;
     }
 
-    public String getBankName() {
+    public BankNames getBankName() {
         return bankName;
     }
 
-    public void setBankName(String bankName) {
+    public void setBankName(BankNames bankName) {
         this.bankName = bankName;
     }
 }

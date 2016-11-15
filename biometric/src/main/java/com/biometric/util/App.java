@@ -1,5 +1,6 @@
-package com.biometric.controller;
+package com.biometric.util;
 
+import com.biometric.controller.HomepPageController;
 import com.biometric.forms.CardDetails;
 import com.biometric.forms.User;
 import com.biometric.util.*;
@@ -86,7 +87,7 @@ public class App
                 System.out.println("The primary key is: "+value);
             }
 
-            CardDetails lCardDetails = new CardDetails("sunil", "12312312", 233, "02/12","sbi", value);
+            CardDetails lCardDetails = new CardDetails("sunil", "12312312", 233, "02/12",BankNames.AXIS, value);
 
             for(int i=0; i<3;i++){
                 query = " insert into carddetails (nameOnCard, cardNumber, cvv, expiryDate , fk)"

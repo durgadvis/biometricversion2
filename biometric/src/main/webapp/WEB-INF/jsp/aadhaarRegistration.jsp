@@ -48,9 +48,10 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class=""><a href="/biometric-1">Home</a></li>
-            <li class=""><a href="/biometric-1/user/newUser">New User</a></li>
-            <li class=""><a href="/biometric-1/shopPage">Shop</a></li>
+                        <li class=""><a href="/biometric-1">Home</a></li>
+                        <li class=""><a href="/biometric-1/registration/aadhaar">Aadhar Registration</a></li>
+                        <li class=""><a href="/biometric-1/registration/bank">Bank Registration</a></li>
+                        <li class=""><a href="/biometric-1/shop/aadhaar">Shop</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -63,10 +64,10 @@
 				<div class="col-lg-6 col-lg-offset-3">
 
 
-<form:form method="POST" action="/biometric-1/user" modelAttribute="userDetail">
+<form:form method="POST" action="/biometric-1/registration/aadhaar" modelAttribute="userDetail">
    <table>
 		<tr>
-            <td><h5 style="color:#fff;font-size:16px;">Please enter your details below </h5>			</td>
+            <td><h5 style="color:#fff;font-size:16px;">Aadhar Registration </h5></td>
         </tr>
         <tr>
             <td><form:label path="name">Name: </form:label></td>
@@ -89,40 +90,10 @@
             <td><form:input path="age" /></td>
         </tr>
 
-		<tr>
-				<td><h5 style="color:#fff;font-size:16px;">Please enter your card details below </h5></td>
-		</tr>
-        <tr id="rowOfCardDetails" style="border:1px solid #fff;">
-            	<td>
-        		    <div id="cardDetails">
-        		    <table>
-        		    <tr>
-        		        <td><form:label path="listCardDetails[0].cardNumber">Card Number</form:label></td>
-        		        <td><form:input path="listCardDetails[0].cardNumber" /></td>
-        		    </tr>
-        		    <tr>
-        		        <td><form:label path="listCardDetails[0].nameOnCard">Name on the card</form:label></td>
-        		        <td><form:input path="listCardDetails[0].nameOnCard" /></td>
-        		    </tr>
-        		    <tr>
-        		        <td><form:label path="listCardDetails[0].expiryDate">Expire Date</form:label></td>
-        		        <td><form:input path="listCardDetails[0].expiryDate" /></td>
-        		    </tr>
-        		    </table>
-        	    </div>
-        	    </td>
-        	    <td>
-        	    	<input type="button" name="" value="Add Card" class="add_card"/>
-        	    </td>
-        	 </tr>
-        <tr>
             <td colspan="2">
-
                 <input type="submit" class="submit_buttom btn btn-mg" name ="scanSubmit" value="Scan and submit"/>
              </td>
         </tr>
-       <!-- <form:input id="fgIsoId" type="hidden" value="null" path="fgIso" />
-        <form:input id="fgBmpId" type="hidden" value="null" path="fgBmp" /> -->
    </table>
 </form:form>
 				</div>
@@ -130,10 +101,10 @@
 			</div><! --/row -->
 	    </div> <!-- /container -->
 	</div><! --/headerwrap -->
-	
+
 	<section id="works"></section>
-	
-	
+
+
 	<div id="social">
 		<div class="container">
 			<div class="row centered">
@@ -155,7 +126,7 @@
 				<div class="col-lg-2">
 					<a href="#"><i class="fa fa-tumblr"></i></a>
 				</div>
-			
+
 			</div><! --/row -->
 		</div><! --/container -->
 	</div><! --/social -->
@@ -176,7 +147,7 @@
     			</div>
     		</div>
     	</div><! --/footerwrap -->
-	
+
 
 
     <!-- Bootstrap core JavaScript

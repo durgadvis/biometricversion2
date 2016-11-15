@@ -46,9 +46,10 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class=""><a href="/biometric-1">Home</a></li>
-            <li class=""><a href="/biometric-1/user/newUser">New User</a></li>
-            <li class=""><a href="/biometric-1/shopPage">Shop</a></li>
+                        <li class=""><a href="/biometric-1">Home</a></li>
+                        <li class=""><a href="/biometric-1/registration/aadhaar">Aadhar Registration</a></li>
+                        <li class=""><a href="/biometric-1/registration/bank">Bank Registration</a></li>
+                        <li class=""><a href="/biometric-1/shop/aadhaar">Shop</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -57,10 +58,33 @@
 	<div id="headerwrap">
 	    <div class="container">
 			<div class="row">
-				<div class="col-lg-6 col-lg-offset-1">
-                    <form:form method="GET" action="/biometric-1/user" model="userDetail">
-                         <h2>Please scan and then choose your card details to shop !!!</h2>
-                         <input type="submit" class="submit_buttom btn btn-mg buttonfonts" name ="scanSubmit" value="Scan to get card details"/>
+				<div class="col-lg-6 col-lg-offset-3">
+                    <form:form method="GET" action="/biometric-1/shop/cardDetails" modelAttribute="userDetail">
+                     <table>
+                            <tr>
+                                 <td><h5 style="color:#fff;font-size:16px;">SHOPPING </h5>			</td>
+                             </tr>
+                             <tr>
+                                 <td><h5 style="color:#fff;font-size:16px;">Please Select the Bank  </h5>			</td>
+                             </tr>
+                             <tr>
+                                         <td>
+                                             <form:select name="bankLst" id="stateLst" path="bankName">
+                                                     <c:forEach items="${bankDetails}" var="option">
+                                                             <form:option value="${option}">
+                                                                 <c:out value="${option}"></c:out>
+                                                             </form:option>
+                                                     </c:forEach>
+                                             </form:select>
+                                         </td>
+                             </tr>
+                             <tr>
+                                <td>
+                                    <h2>Please scan and then choose your card details to shop !!!</h2>
+                                    <input type="submit" class="submit_buttom btn btn-mg buttonfonts" name ="scanSubmit" value="Scan to get card details"/>
+                                </td>
+                             </tr>
+                     </table>
                     </form:form>
 				</div>
 			</div><! --/row -->

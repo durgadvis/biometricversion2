@@ -14,11 +14,13 @@
     <title>Bio Metric</title>
 
     <!-- Bootstrap core CSS -->
+     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/font-awesome.min.css"/>" rel="stylesheet">
+
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -46,9 +48,10 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class=""><a href="/biometric-1">Home</a></li>
-            <li class=""><a href="/biometric-1/user/newUser">New User</a></li>
-            <li class=""><a href="/biometric-1/shopPage">Shop</a></li>
+                        <li class=""><a href="/biometric-1">Home</a></li>
+                        <li class=""><a href="/biometric-1/registration/aadhaar">Aadhar Registration</a></li>
+                        <li class=""><a href="/biometric-1/registration/bank">Bank Registration</a></li>
+                        <li class=""><a href="/biometric-1/shop/aadhaar">Shop</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -59,22 +62,75 @@
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-lg-offset-3">
-					<div class="col-lg-6 col-lg-offset-6">
-					<button class="submit_buttom btn btn-mg" id="scannerandgetdetails">Scan Fingerdfsd</button>
-    				<div id="response"></div>
 
-    				<form method="get" action="/biometric-1/user">
-                       <button class="submit_buttom btn btn-mg" type="submit">Match</button>
-                    </form>
+
+<form:form method="POST" action="/biometric-1/registration/bank" modelAttribute="userDetail">
+   <table>
+		<tr>
+            <td><h5 style="color:#fff;font-size:16px;">Bank Registration </h5>			</td>
+        </tr>
+   		<tr>
+               <td><h5 style="color:#fff;font-size:16px;">Please Select the Bank  </h5>			</td>
+        </tr>
+        <tr>
+            <td>
+                <form:select name="bankLst" id="stateLst" path="bankName">
+                        <c:forEach items="${bankDetails}" var="option">
+                                <form:option value="${option}">
+                                    <c:out value="${option}"></c:out>
+                                </form:option>
+                        </c:forEach>
+                </form:select>
+            </td>
+        </tr>
+        <tr>
+            <td><form:label path="pk">Aadhar Number: </form:label></td>
+            <td><form:input path="pk" /></td>
+        </tr>
+
+		<tr>
+				<td><h5 style="color:#fff;font-size:16px;">Please enter your card details below </h5></td>
+		</tr>
+        <tr id="rowOfCardDetails" style="border:1px solid #fff;">
+            	<td>
+        		    <div id="cardDetails">
+        		    <table>
+        		    <tr>
+        		        <td><form:label path="listCardDetails[0].cardNumber">Card Number</form:label></td>
+        		        <td><form:input path="listCardDetails[0].cardNumber" /></td>
+        		    </tr>
+        		    <tr>
+        		        <td><form:label path="listCardDetails[0].nameOnCard">Name on the card</form:label></td>
+        		        <td><form:input path="listCardDetails[0].nameOnCard" /></td>
+        		    </tr>
+        		    <tr>
+        		        <td><form:label path="listCardDetails[0].expiryDate">Expire Date</form:label></td>
+        		        <td><form:input path="listCardDetails[0].expiryDate" /></td>
+        		    </tr>
+        		    </table>
+        	    </div>
+        	    </td>
+        	    <td>
+        	    	<input type="button" name="" value="Add Card" class="add_card"/>
+        	    </td>
+        	 </tr>
+        <tr>
+                <td colspan="2">
+                <input type="submit" class="submit_buttom btn btn-mg" name ="scanSubmit" value="Submit"/>
+             </td>
+        </tr>
+
+   </table>
+</form:form>
 				</div>
-				</div>
+
 			</div><! --/row -->
 	    </div> <!-- /container -->
 	</div><! --/headerwrap -->
-	
+
 	<section id="works"></section>
-	
-	
+
+
 	<div id="social">
 		<div class="container">
 			<div class="row centered">
@@ -96,7 +152,7 @@
 				<div class="col-lg-2">
 					<a href="#"><i class="fa fa-tumblr"></i></a>
 				</div>
-			
+
 			</div><! --/row -->
 		</div><! --/container -->
 	</div><! --/social -->
@@ -117,12 +173,12 @@
     			</div>
     		</div>
     	</div><! --/footerwrap -->
-	
+
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+   <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/resources/js/biometric.home.js"/>"></script>

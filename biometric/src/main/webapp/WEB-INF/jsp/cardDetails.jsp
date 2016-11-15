@@ -46,9 +46,10 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class=""><a href="/biometric-1">Home</a></li>
-            <li class=""><a href="/biometric-1/user/newUser">New User</a></li>
-            <li class=""><a href="/biometric-1/shopPage">Shop</a></li>
+                        <li class=""><a href="/biometric-1">Home</a></li>
+                        <li class=""><a href="/biometric-1/registration/aadhaar">Aadhar Registration</a></li>
+                        <li class=""><a href="/biometric-1/registration/bank">Bank Registration</a></li>
+                        <li class=""><a href="/biometric-1/shop/aadhaar">Shop</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

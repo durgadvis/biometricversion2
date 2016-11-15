@@ -1,5 +1,7 @@
 package com.biometric.forms;
 
+import com.biometric.util.BankNames;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,6 +17,8 @@ public class User implements Serializable{
     private int age;
     private byte[] fgIso;
     private byte[] fgBmp;
+
+    private BankNames bankName;
 
 
 
@@ -105,4 +109,14 @@ public class User implements Serializable{
     public void setPk(int pk) {
         this.pk = pk;
     }
+
+    public BankNames getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(BankNames bankName) {
+        this.bankName = bankName;
+    }
+
+
 }
