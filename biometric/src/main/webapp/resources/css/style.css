@@ -78,22 +78,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-default .navbar-brand {
-	color: #1abc9c;
+	color: #fff;
 }
 
 .navbar-default {
-	background-color: transparent;
-	border-color: transparent;
+	background-color: #3b5998;
+	border-color: #3b5998;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-	color: #1abc9c;
-	background-color: transparent;
-	border-bottom: 2px solid #1abc9c
+	color: #fff;
+	background-color: #3b5998;
+	border-bottom: 2px solid #fff;
 }
 
 .navbar-default .navbar-nav > li > a {
-	color: #1abc9c;
+	color: #fff;
 }
 
 /* ==========================================================================
@@ -101,7 +101,7 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 
 #headerwrap {
-	background: url(../img/back.jpg) no-repeat center top;
+	/*background: url(../img/back.jpg) no-repeat center top; */
 	margin-top: -70px;
 	padding-top: 250px;
 	text-align:center;
@@ -153,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
 #footerwrap {
 	padding-top: 70px;
 	padding-bottom: 50px;
-	background-color: #2f2f2f;
+	background-color: #3b5998;
 }
 
 #footerwrap p {
@@ -235,8 +235,8 @@ td{
 
 .submit_buttom{
 	float: right;
-    background-color: #d6bfcc;
-    color: #141414;
+    background-color: #3b5998;
+    color: #fff;
 }
 
 .textfont{
@@ -246,4 +246,8 @@ td{
 .buttonfonts{
 	height: 42px;
     width: 213px;
+}
+
+label{
+	color:#3b5998;
 }

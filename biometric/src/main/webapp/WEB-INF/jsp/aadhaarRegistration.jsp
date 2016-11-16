@@ -35,7 +35,7 @@
   <body>
 
     <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -67,7 +67,7 @@
 <form:form method="POST" action="/biometric-1/registration/aadhaar" modelAttribute="userDetail">
    <table>
 		<tr>
-            <td><h5 style="color:#fff;font-size:16px;">Aadhar Registration </h5></td>
+            <td><h5>Aadhar Registration </h5></td>
         </tr>
         <tr>
             <td><form:label path="name">Name: </form:label></td>
