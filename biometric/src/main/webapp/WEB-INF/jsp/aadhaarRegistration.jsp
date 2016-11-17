@@ -16,6 +16,7 @@
     <!-- Bootstrap core CSS -->
      <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/formValidation.min.css"/>" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
@@ -38,13 +39,13 @@
     <div class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <button type="button" class="navbar-toggle " data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">BIOMETRICSHOPPING</a>
+          <a class="navbar-brand" href="/biometric-1">BIOMETRIC SHOPPING</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -60,44 +61,57 @@
 
 	<div id="headerwrap">
 	    <div class="container">
+		    <div class="row">
+			    <div class="col-lg-6 col-lg-offset-3">
+				    <h5 style="color:#3b5998;font-size:16px;">Aadhar Registration </h5>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-lg-6 col-lg-offset-3">
+					<form:form method="POST" action="/biometric-1/registration/aadhaar" modelAttribute="userDetail" id="aadhaarRegistrationForm" class="form-horizontal">
+						<div class="form-group">
+							<form:label path="name" class="control-label col-xs-4">Name: </form:label>
+							<div class="col-xs-5">
+								<form:input path="name" class="form-control" name="name" required="required"/>
+							</div>
+						</div>
 
+						<div class="form-group">
+						<form:label path="phonenumber" class="control-label col-xs-4">Phone Number: </form:label>
+							<div class="col-xs-5">
+								<form:input path="phonenumber"  class="form-control" name="phoneNumber" required="required" />
+							</div>
+						</div>
 
-<form:form method="POST" action="/biometric-1/registration/aadhaar" modelAttribute="userDetail">
-   <table>
-		<tr>
-            <td><h5>Aadhar Registration </h5></td>
-        </tr>
-        <tr>
-            <td><form:label path="name">Name: </form:label></td>
-            <td><form:input path="name" /></td>
-        </tr>
-        <tr>
-            <td><form:label path="phonenumber">Phone Number: </form:label></td>
-            <td><form:input path="phonenumber" /></td>
-        </tr>
-        <tr>
-            <td><form:label path="emailId">Email Id: </form:label></td>
-            <td><form:input path="emailId" /></td>
-        </tr>
-        <tr>
-            <td><form:label path="address">Address: </form:label></td>
-            <td><form:input path="address" /></td>
-        </tr>
-        <tr>
-            <td><form:label path="age">Age: </form:label></td>
-            <td><form:input path="age" /></td>
-        </tr>
+						<div class="form-group">
+							<form:label path="emailId" class="control-label col-xs-4">Email Id: </form:label>
+							<div class="col-xs-5">
+								<form:input path="emailId"  class="form-control" name="emailId" required="required" />
+							</div>
+						</div>
 
-            <td colspan="2">
-                <input type="submit" class="submit_buttom btn btn-mg" name ="scanSubmit" value="Scan and submit"/>
-             </td>
-        </tr>
-   </table>
-</form:form>
+						<div class="form-group">
+							<form:label path="address" class="control-label col-xs-4">Address: </form:label>
+							<div class="col-xs-5">
+								<form:input path="address"  class="form-control" name="address" required="required" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<form:label path="age" class="control-label col-xs-4">Age: </form:label>
+							<div class="col-xs-5">
+								<form:input path="age"  class="form-control" name="age" required="required" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-xs-9 col-xs-offset-0">
+								<input type="submit" class="submit_buttom btn btn-mg" name ="scanSubmit" value="Scan and submit"/>
+							</div>
+						</div>
+
+					</form:form>
 				</div>
-
 			</div><! --/row -->
 	    </div> <!-- /container -->
 	</div><! --/headerwrap -->
@@ -156,5 +170,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/resources/js/biometric.home.js"/>"></script>
+    <script src="<c:url value="/resources/js/formValidation/formValidation.min.js"/>"></script>
+    <script src="<c:url value="/resources/js/formValidation/bootstrap.min.js"/>"></script>
   </body>
 </html>

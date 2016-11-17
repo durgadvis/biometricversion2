@@ -61,64 +61,69 @@ public class AadhaarController {
 
         //Calling Util Method to capture the fingerPrint
         CapturedImageData lCapturedImage  = Util.captureFingerPrint(true, aInDevice);
-        byte[] lIsoDb = lCapturedImage.getIso19794_2Template();
-        byte[] lBmp = lCapturedImage.getBmpImageData();
 
         log.trace("Adding new user to database");
-        if(lCapturedImage != null && lIsoDb != null){
-            //if(aInUserDetails != null && aInUserDetails.getFgIso()!=null ){
-            String url = "jdbc:mysql://localhost:3306/biometric";
-            String username = "root";
-            String password = "admin";
+        if(lCapturedImage != null && aInUserDetails != null ){
+            byte[] lIsoDb = lCapturedImage.getIso19794_2Template();
+            byte[] lBmp = lCapturedImage.getBmpImageData();
+            if(lIsoDb !=null) {
+                //if(aInUserDetails != null && aInUserDetails.getFgIso()!=null ){
+                String url = "jdbc:mysql://localhost:3306/biometric";
+                String username = "root";
+                String password = "admin";
 
-            log.trace("Connecting database...");
-            java.sql.Connection connection = null;
+                log.trace("Connecting database...");
+                java.sql.Connection connection = null;
 
-            try{
-                Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection(url, username, password);
-                log.trace("Database connected!");
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    connection = DriverManager.getConnection(url, username, password);
+                    log.trace("Database connected!");
 
-                String query = " insert into userdetails (name, phoneNumber, emailId, address , age, fpIso, fbBmpImage)"
-                        + " values (?, ?, ?, ?, ?, ?, ?)";
+                    String query = " insert into userdetails (name, phoneNumber, emailId, address , age, fpIso, fbBmpImage)"
+                            + " values (?, ?, ?, ?, ?, ?, ?)";
 
-                // create the mysql insert preparedstatement
-                PreparedStatement preparedStmt = connection.prepareStatement(query, com.mysql.jdbc.Statement.RETURN_GENERATED_KEYS);
-                preparedStmt.setString(1, aInUserDetails.getName());
-                preparedStmt.setLong(2, aInUserDetails.getPhonenumber());
-                preparedStmt.setString(3, aInUserDetails.getEmailId());
-                preparedStmt.setString(4, aInUserDetails.getAddress());
-                preparedStmt.setInt(5, aInUserDetails.getAge());
-                preparedStmt.setBlob(6, new javax.sql.rowset.serial.SerialBlob(lIsoDb));
-                //preparedStmt.setBlob(6, new javax.sql.rowset.serial.SerialBlob(aInUserDetails.getFgIso()));
-                preparedStmt.setBlob(7, new javax.sql.rowset.serial.SerialBlob(lBmp));
-                //preparedStmt.setBlob(7, new javax.sql.rowset.serial.SerialBlob(aInUserDetails.getFgBmp()));
+                    // create the mysql insert preparedstatement
+                    PreparedStatement preparedStmt = connection.prepareStatement(query, com.mysql.jdbc.Statement.RETURN_GENERATED_KEYS);
+                    preparedStmt.setString(1, aInUserDetails.getName());
+                    preparedStmt.setLong(2, aInUserDetails.getPhonenumber());
+                    preparedStmt.setString(3, aInUserDetails.getEmailId());
+                    preparedStmt.setString(4, aInUserDetails.getAddress());
+                    preparedStmt.setInt(5, aInUserDetails.getAge());
+                    preparedStmt.setBlob(6, new javax.sql.rowset.serial.SerialBlob(lIsoDb));
+                    //preparedStmt.setBlob(6, new javax.sql.rowset.serial.SerialBlob(aInUserDetails.getFgIso()));
+                    preparedStmt.setBlob(7, new javax.sql.rowset.serial.SerialBlob(lBmp));
+                    //preparedStmt.setBlob(7, new javax.sql.rowset.serial.SerialBlob(aInUserDetails.getFgBmp()));
 
-                // execute the prepared statement
-                preparedStmt.executeUpdate();
-                ResultSet rs = preparedStmt.getGeneratedKeys();
-                int value =0;
-                //Retrieve the auto generated Primary Key
-                if(rs.next()) {
-                    value = rs.getInt(1);
-                    log.debug("The primary key is:"+value);
-                }
-            } catch (SQLException e) {
-                log.error("Cannot connect the database!", e);
-                throw new IllegalStateException("Cannot connect the database!", e);
-            } catch (ClassNotFoundException e) {
-                log.error("Class Class Exception in sql registration");
-                e.printStackTrace();
-            } finally {
-                if (connection != null) {
-                    try {
-                        connection.close();
-                    } catch (SQLException e) {
-                        log.error("Cannot close the connection!", e);
+                    // execute the prepared statement
+                    preparedStmt.executeUpdate();
+                    ResultSet rs = preparedStmt.getGeneratedKeys();
+                    int value = 0;
+                    //Retrieve the auto generated Primary Key
+                    if (rs.next()) {
+                        value = rs.getInt(1);
+                        log.debug("The primary key is:" + value);
+                    }
+                } catch (SQLException e) {
+                    log.error("Cannot connect the database!", e);
+                    throw new IllegalStateException("Cannot connect the database!", e);
+                } catch (ClassNotFoundException e) {
+                    log.error("Class Class Exception in sql registration");
+                    e.printStackTrace();
+                } finally {
+                    if (connection != null) {
+                        try {
+                            connection.close();
+                        } catch (SQLException e) {
+                            log.error("Cannot close the connection!", e);
+                        }
                     }
                 }
+                return true;
+            }else{
+                log.error("User not Added since fingerPrint was not captured properly");
+                return false;
             }
-            return true;
         }else{
             log.error("User not Added since fingerPrint was not captured properly");
             return false;
