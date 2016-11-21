@@ -240,7 +240,7 @@ td{
 }
 
 .textfont{
-	color : #ebccd1;
+	color : #a32929;
 
 }
 .buttonfonts{
@@ -250,4 +250,54 @@ td{
 
 label{
 	color:#3b5998;
+}
+
+#productContainer{
+		margin-top: 70px;
+}
+
+.prod_desc{
+ margin-top:10px;
+ padding-bottom:10px; 
+ padding-top:5px;
+}
+
+.product_color{font-size: 15px;
+    font-family: inherit;
+    margin: 21px;
+    color: black;
+}
+.product_size{
+	font-size: 15px;
+    font-family: inherit;
+    margin: 21px;
+    color: black;
+}
+.color_container{
+	color: #a32929;
+    padding-bottom: 10px;
+	
+}
+
+.size_container{
+	color: #a32929;
+    padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.price_section{
+	margin-top: 35px;
+    color: #3b5998;
+}
+.prod_names{
+	font-size: 24px;
+    color: black;
+}
+#shop_now{
+    float: right;
+    background-color: #3b5998;
+    padding: 10px;
+    color: #fff;
+    margin-top: 39px;	
+	
 }
