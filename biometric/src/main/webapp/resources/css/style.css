@@ -5,7 +5,7 @@
  * Project Name: NYC Design
  * Version: 1.0
  * Date: 04-20-2014
- * URL: 
+ * URL:
  */
 
 
@@ -69,7 +69,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 700;
-    color: #ebccd1;
+    color: #3b5998;
 }
 
 
@@ -258,7 +258,7 @@ label{
 
 .prod_desc{
  margin-top:10px;
- padding-bottom:10px; 
+ padding-bottom:10px;
  padding-top:5px;
 }
 
@@ -276,7 +276,7 @@ label{
 .color_container{
 	color: #a32929;
     padding-bottom: 10px;
-	
+
 }
 
 .size_container{
@@ -298,6 +298,6 @@ label{
     background-color: #3b5998;
     padding: 10px;
     color: #fff;
-    margin-top: 39px;	
-	
+    margin-top: 39px;
+
 }
