@@ -58,7 +58,7 @@
       </div>
     </div>
 
-
+	
 	<div id="aadharwrap">
 	    <div class="container">
 		    <div class="row">
@@ -112,6 +112,10 @@
 						</div>
 
 					</form:form>
+					<div id="gif" style="visibility: hidden;">
+						<span> Updating aadhar database.. </span>
+						<img src="/biometric-1/resources/img/loader.gif"  style="display: block; margin: 0 auto; width: 100px;">
+					</div>
 				</div>
 			</div><! --/row -->
 	    </div> <!-- /container -->

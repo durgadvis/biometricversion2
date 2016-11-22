@@ -185,6 +185,11 @@ $(document).ready(function () {
 	 });*/
 	
 	
+	 $('#aadhaarRegistrationForm').submit(function() {
+		 	$('#gif').css('visibility', 'visible'); 
+	        return true;
+	    });
+	
 	
 	var rowcount=0;
 	$(document).on('click',"input.add_card",function(e){
