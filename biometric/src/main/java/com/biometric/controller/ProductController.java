@@ -26,7 +26,7 @@ public class ProductController {
 		Product product=new Product();
 		ProductAttributes productAttributes=new ProductAttributes();
 		product.setProductId("SHIRT-1000001");
-		product.setProductName("slim shirt");
+		product.setProductName("Slim Shirt");
 		product.setManufacturerName("Levis Shirt");
 		product.setListPrice(300.00);
 		product.setDescription("Levis as a brand is one of the finest brand in the world. Shirt is made of pure cotton and stitched delicately by experts.");

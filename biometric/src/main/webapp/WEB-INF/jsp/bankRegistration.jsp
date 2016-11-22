@@ -16,6 +16,7 @@
     <!-- Bootstrap core CSS -->
      <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet">
+	<link href="<c:url value="/resources/css/formValidation.min.css"/>" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
@@ -44,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">BIOMETRICSHOPPING</a>
+          <a class="navbar-brand" href="/biometric-1">BIOMETRIC SHOPPING</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -67,68 +68,73 @@
 				</div>
 			</div>
 
+			<div class="row">
+			    <div class="col-lg-6 col-lg-offset-3">
 
-<form:form method="POST" action="/biometric-1/registration/bank" modelAttribute="userDetail">
-   <table>
-		<tr>
-            <td><h5 style="color:#fff;font-size:16px;">Bank Registration </h5>			</td>
-        </tr>
-   		<tr>
-               <td><h5 style="color:#fff;font-size:16px;">Please Select the Bank  </h5>			</td>
-        </tr>
-        <tr>
-            <td>
-                <form:select name="bankLst" id="stateLst" path="bankName">
-                        <c:forEach items="${bankDetails}" var="option">
-                                <form:option value="${option}">
-                                    <c:out value="${option}"></c:out>
-                                </form:option>
-                        </c:forEach>
-                </form:select>
-            </td>
-        </tr>
-        <tr>
-            <td><form:label path="pk">Aadhar Number: </form:label></td>
-            <td><form:input path="pk" /></td>
-        </tr>
+				    <form:form method="POST" action="/biometric-1/registration/bank" modelAttribute="userDetail" id="bankRegistrationForm" class="form-horizontal">
+					    <div class="form-group">
+						    <form:label path="bankName" class="control-label col-xs-4">Select Bank: </form:label>
+						    <div class="col-xs-5">
+							    <form:select name="bankList" id="stateLst" path="bankName" class="form-control">
+								    <c:forEach items="${bankDetails}" var="option">
+									    <form:option value="${option}">
+										    <c:out value="${option}"></c:out>
+									    </form:option>
+								    </c:forEach>
+							    </form:select>
+						    </div>
+					    </div>
 
-		<tr>
-				<td><h5 style="color:#fff;font-size:16px;">Please enter your card details below </h5></td>
-		</tr>
-        <tr id="rowOfCardDetails" style="border:1px solid #fff;">
-            	<td>
-        		    <div id="cardDetails">
-        		    <table>
-        		    <tr>
-        		        <td><form:label path="listCardDetails[0].cardNumber">Card Number</form:label></td>
-        		        <td><form:input path="listCardDetails[0].cardNumber" /></td>
-        		    </tr>
-        		    <tr>
-        		        <td><form:label path="listCardDetails[0].nameOnCard">Name on the card</form:label></td>
-        		        <td><form:input path="listCardDetails[0].nameOnCard" /></td>
-        		    </tr>
-        		    <tr>
-        		        <td><form:label path="listCardDetails[0].expiryDate">Expire Date</form:label></td>
-        		        <td><form:input path="listCardDetails[0].expiryDate" /></td>
-        		    </tr>
-        		    </table>
-        	    </div>
-        	    </td>
-        	    <td>
-        	    	<input type="button" name="" value="Add Card" class="add_card"/>
-        	    </td>
-        	 </tr>
-        <tr>
-                <td colspan="2">
-                <input type="submit" class="submit_buttom btn btn-mg" name ="scanSubmit" value="Submit"/>
-             </td>
-        </tr>
+					    <div class="form-group">
+						    <form:label path="pk" class="control-label col-xs-4">Aadhaar Number: </form:label>
+						    <div class="col-xs-5">
+							    <form:input path="pk"  class="form-control" name="pk" required="required" />
+						    </div>
+					    </div>
 
-   </table>
-</form:form>
-				</div>
+					    <div>
+						    <h5 style="color:#3b5998;font-size:16px;">Please enter your card's details below </h5>
+					    </div>
 
-			</div><! --/row -->
+					    <table>
+						    <tr id="rowOfCardDetails" style="border:1px solid #fff;">
+							    <td>
+								    <div class="form-group">
+									    <form:label path="listCardDetails[0].cardNumber" class="control-label col-xs-5">Card Number:</form:label>
+									    <div class="col-xs-7">
+										    <form:input path="listCardDetails[0].cardNumber"  class="form-control" name="cardNumber"/>
+									    </div>
+								    </div>
+
+								    <div class="form-group">
+									    <form:label path="listCardDetails[0].nameOnCard" class="control-label col-xs-5">Name on the card:</form:label>
+									    <div class="col-xs-7">
+										    <form:input path="listCardDetails[0].nameOnCard"  class="form-control"  name="nameOnCard" />
+									    </div>
+								    </div>
+								    <div class="form-group">
+									    <form:label path="listCardDetails[0].expiryDate" class="control-label col-xs-5">Expire Date:</form:label>
+									    <div class="col-xs-7">
+										    <form:input path="listCardDetails[0].expiryDate"  class="form-control" name="expiryDate"/>
+									    </div>
+								    </div>
+							    </td>
+							    <td>
+								    <div class="col-xs-5">
+									    <input type="button"  value="Add Card" class="add_card btn btn-mg"/>
+								    </div>
+							    </td>
+						    </tr>
+					    </table>
+
+					    <div class="form-group">
+						    <div class="col-xs-9 col-xs-offset-0">
+							    <input type="submit" class="submit_buttom btn btn-mg" name ="scanSubmit" value="Submit"/>
+						    </div>
+					    </div>
+				    </form:form>
+			    </div>
+	        </div><! --/row -->
 	    </div> <!-- /container -->
 	</div><! --/headerwrap -->
 
@@ -186,5 +192,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/resources/js/biometric.home.js"/>"></script>
+    <script src="<c:url value="/resources/js/formValidation/formValidation.min.js"/>"></script>
+    <script src="<c:url value="/resources/js/formValidation/bootstrap.min.js"/>"></script>
   </body>
 </html>

@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">BIOMETRIC SHOPPING</a>
+          <a class="navbar-brand" href="/biometric-1">BIOMETRIC SHOPPING</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
