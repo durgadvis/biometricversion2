@@ -49,7 +49,7 @@
                         <li class=""><a href="/biometric-1">Home</a></li>
                         <li class=""><a href="/biometric-1/registration/aadhaar">Aadhar Registration</a></li>
                         <li class=""><a href="/biometric-1/registration/bank">Bank Registration</a></li>
-                        <li class=""><a href="/biometric-1/shop/aadhaar">Shop</a></li>
+                        <li class=""><a href="/biometric-1/shop">Shop</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -90,7 +90,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-xs-9 col-xs-offset-0">
-							<input type="submit" class="submit_buttom btn btn-mg" name ="shop" value="Shop"/>
+							<input type="submit" class="submit_buttom btn btn-mg" name ="shop" value="Pay Now"/>
 						</div>
 					</div>
 					</form:form>

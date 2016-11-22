@@ -15,7 +15,7 @@ import com.biometric.models.ProductAttributes;
 public class ProductController {
 
 	
-	@RequestMapping(value="/product" , method=RequestMethod.GET)
+	@RequestMapping(value="/shop" , method=RequestMethod.GET)
 	public ModelAndView getProduct(Model model){
 		Product product= setAndGetProduct();
 		model.addAttribute("productData", product);

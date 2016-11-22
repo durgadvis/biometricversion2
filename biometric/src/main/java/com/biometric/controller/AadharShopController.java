@@ -41,25 +41,31 @@ public class AadharShopController {
     }
 
     @RequestMapping(value = "/shop/cardDetails", method = RequestMethod.GET)
-    public ModelAndView getCardDetailsOfBank(@ModelAttribute("userDetail") User userDetails) {
+    public ModelAndView getCardDetailsOfBank(@ModelAttribute("userDetail") User userDetails, Model aInModel) {
         log.info("> getDetailsOnScan");
         MMMCogentCSD200DeviceImpl aInDevice = new MMMCogentCSD200DeviceImpl();
         CapturedImageData lCapturedImage  = Util.captureFingerPrint(true, aInDevice);
         BankNames lBankName = userDetails.getBankName();
         User lMatchedUser = findMatchingUser(aInDevice, lCapturedImage, lBankName);
-        ModelAndView model = new ModelAndView("cardDetails");
 
         if(lMatchedUser != null){
-			/*aInModel.addAttribute("name", lMatchedUser.getName());
-			aInModel.addAttribute("userDetail", lMatchedUser);*/
-            model.addObject("userDetail", lMatchedUser);
+            if(lMatchedUser.getListCardDetails() != null && lMatchedUser.getListCardDetails().size() > 0){
+                ModelAndView model = new ModelAndView("cardDetails");
+                model.addObject("userDetail", lMatchedUser);
+                log.info("< getDetailsOnScan");
+                return model;
+            }else{
+                String message = "Failed to shop , User has no card details associated to Aaadhaar ";
+                aInModel.addAttribute("message", message);
+                log.info("< getDetailsOnScan");
+                return new ModelAndView("index", message, aInModel);
+            }
         }else{
-			/*aInModel.addAttribute("name", "not Found");
-			aInModel.addAttribute("userDetail", new User());*/
-            model.addObject("userDetail", new User());
+            String message = "Failed to shop , No Matching user found";
+            aInModel.addAttribute("message", message);
+            log.info("< getDetailsOnScan");
+            return new ModelAndView("index", message, aInModel);
         }
-        log.info("< getDetailsOnScan");
-        return model;
     }
 
     @RequestMapping(value="/shop/payment", method= RequestMethod.POST)

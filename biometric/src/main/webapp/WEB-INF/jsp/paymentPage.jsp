@@ -49,7 +49,7 @@
 				<li class=""><a href="/biometric-1">Home</a></li>
 				<li class=""><a href="/biometric-1/registration/aadhaar">Aadhar Registration</a></li>
 				<li class=""><a href="/biometric-1/registration/bank">Bank Registration</a></li>
-				<li class=""><a href="/biometric-1/shop/aadhaar">Shop</a></li>
+				<li class=""><a href="/biometric-1/shop">Shop</a></li>
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div>
@@ -60,7 +60,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-3 textfont">
-				<h2> Thanks for choosing the card . We will procced the card to payement gateway.</h2>
+				<h2> Thanks You, The card chosen will be used for shopping .<br />Will now procced to payment gateway......</h2>
 			</div>
 		</div><! --/row -->
 	</div> <!-- /container -->

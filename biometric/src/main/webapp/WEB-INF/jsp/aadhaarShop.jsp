@@ -50,17 +50,17 @@
                         <li class=""><a href="/biometric-1">Home</a></li>
                         <li class=""><a href="/biometric-1/registration/aadhaar">Aadhar Registration</a></li>
                         <li class=""><a href="/biometric-1/registration/bank">Bank Registration</a></li>
-                        <li class=""><a href="/biometric-1/shop/aadhaar">Shop</a></li>
+                        <li class=""><a href="/biometric-1/shop">Shop</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-<div id="headerwrap">
+<div id="aadharwrap">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-lg-offset-3">
-                <h5 style="color:#3b5998;font-size:16px;">SHOPPING </h5>
+                <h5 style="color:#3b5998;font-size:30px;text-align:center;">SHOPPING </h5>
             </div>
         </div>
         <div class="row">

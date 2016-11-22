@@ -40,16 +40,16 @@ public class AadhaarController {
 
     @RequestMapping(value = "/registration/aadhaar", method = RequestMethod.POST)
     public ModelAndView aadhaarRegistrationPost(@ModelAttribute("userDetail") User userDetails, Model model) {
-        log.info("> 1Aadhaar Registration Post URL");
+        log.info("> Aadhaar Registration Post URL");
         Integer lInsertedIndex = addUserToDatabase(userDetails);
         if(lInsertedIndex != 0){
-            String message = "New User has been added to the database with aadhar Id : "+ lInsertedIndex;
-            log.info("<1 Aadhaar Registration Post URL");
+            String message = "New User has been added to the database with Aadhaar Id : "+ lInsertedIndex;
+            log.info("< Aadhaar Registration Post URL");
             model.addAttribute("message", message);
             return new ModelAndView("index", message, model);
         }else{
             String message = "Failed to insert new user";
-            log.info("<1Aadhaar Registration Post URL");
+            log.info("< Aadhaar Registration Post URL");
             model.addAttribute("message", message);
             return new ModelAndView("index", message, model);
         }
@@ -72,6 +72,7 @@ public class AadhaarController {
 
             log.trace("Connecting database...");
             java.sql.Connection connection = null;
+            int $RetValue =0;
 
             try{
                 Class.forName("com.mysql.jdbc.Driver");
@@ -96,12 +97,11 @@ public class AadhaarController {
                 // execute the prepared statement
                 preparedStmt.executeUpdate();
                 ResultSet rs = preparedStmt.getGeneratedKeys();
-                int value =0;
                 //Retrieve the auto generated Primary Key
                 if(rs.next()) {
-                    value = rs.getInt(1);
-                    log.debug("The primary key is:"+value);
-                    return value;
+                    $RetValue = rs.getInt(1);
+                    log.debug("The primary key is:"+$RetValue);
+                    return $RetValue;
                 }
             } catch (SQLException e) {
                 log.error("Cannot connect the database!", e);
@@ -115,10 +115,10 @@ public class AadhaarController {
                         connection.close();
                     } catch (SQLException e) {
                         log.error("Cannot close the connection!", e);
-                        return 0;
+                        return $RetValue;
                     }
                 }
-                return 0;
+                return $RetValue;
             }
         }else{
             log.error("User not Added since fingerPrint was not captured properly");

@@ -36,7 +36,7 @@
   <body>
 
     <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -51,20 +51,20 @@
           <ul class="nav navbar-nav navbar-right">
                         <li class=""><a href="/biometric-1">Home</a></li>
                         <li class=""><a href="/biometric-1/registration/aadhaar">Aadhar Registration</a></li>
-                        <li class=""><a href="/biometric-1/registration/bank">Bank Registration</a></li>
-                        <li class=""><a href="/biometric-1/shop/aadhaar">Shop</a></li>
+                        <li class="active"><a href="/biometric-1/registration/bank">Bank Registration</a></li>
+                        <li class=""><a href="/biometric-1/shop">Shop</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
 
-	<div id="headerwrap">
+	<div id="aadharwrap">
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-lg-offset-3">
 					<img src = "http://localhost:8080/biometric-1/resources/img/RBI.jpg" style="width:150px;height:150px;">
-					<h5 style="color:#3b5998;font-size:16px;">Bank Registration </h5>
+					<h5 style="color:#3b5998;font-size:30px;text-align:center;">Bank Registration </h5>
 				</div>
 			</div>
 

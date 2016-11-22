@@ -44,14 +44,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">BIOMETRICSHOPPING</a>
+          <a class="navbar-brand" href="index.html">BIOMETRIC SHOPPING</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
                         <li class=""><a href="/biometric-1">Home</a></li>
                         <li class=""><a href="/biometric-1/registration/aadhaar">Aadhar Registration</a></li>
                         <li class=""><a href="/biometric-1/registration/bank">Bank Registration</a></li>
-                        <li class=""><a href="/biometric-1/shop/aadhaar">Shop</a></li>
+                        <li class="active"><a href="/biometric-1/shop">Shop</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -63,7 +63,7 @@
 				<img src="/biometric-1/${productData.primarImageUrl}" />		
 			</div>
 			<div id="right_container" class="col-lg-6">
-				<div class="textfont"> <span> product Id : ${productData.productId}  </span></div>
+				<div class="textfont"> <span> Product Id : ${productData.productId}  </span></div>
 				<div class="prod_names">${productData.productName} -
 				${productData.manufacturerName}
 				</div>
@@ -85,17 +85,17 @@
 				<div class="price_section">
 				<span>Price : Rs. ${productData.listPrice} </span>
 				</div>
+
 				<div id="shop_now">
-				Shop Now
+					<form name="form1" action="/biometric-1/shop/aadhaar" method="GET">
+						<input type="SUBMIT" class="submit_buttom btn btn-mg" value="Shop Now">
+					</form>
 				</div>
 			</div>
 			
 		</div>	
 		
 	</div>
-	
-
-
 
 	
 	<section id="works"></section>

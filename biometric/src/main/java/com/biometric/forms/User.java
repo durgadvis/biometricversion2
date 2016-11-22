@@ -20,8 +20,7 @@ public class User implements Serializable{
 
     private BankNames bankName;
 
-
-
+    //In model to retrieve the selected card.
     private List<CardDetails> listCardDetails;
 
     private int pk;
