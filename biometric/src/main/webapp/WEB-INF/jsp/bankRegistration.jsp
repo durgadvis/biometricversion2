@@ -62,6 +62,10 @@
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-lg-offset-3">
+					<img src = "http://localhost:8080/biometric-1/resources/img/RBI.jpg" style="width:150px;height:150px;">
+					<h5 style="color:#3b5998;font-size:16px;">Bank Registration </h5>
+				</div>
+			</div>
 
 
 <form:form method="POST" action="/biometric-1/registration/bank" modelAttribute="userDetail">

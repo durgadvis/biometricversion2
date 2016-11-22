@@ -40,23 +40,22 @@ public class AadhaarController {
 
     @RequestMapping(value = "/registration/aadhaar", method = RequestMethod.POST)
     public ModelAndView aadhaarRegistrationPost(@ModelAttribute("userDetail") User userDetails, Model model) {
-        log.info("> Aadhaar Registration Post URL");
-        boolean lIsInserted = addUserToDatabase(userDetails);
-
-        if(lIsInserted){
-            String message = "New User has been added to the database";
-            log.info("< Aadhaar Registration Post URL");
+        log.info("> 1Aadhaar Registration Post URL");
+        Integer lInsertedIndex = addUserToDatabase(userDetails);
+        if(lInsertedIndex != 0){
+            String message = "New User has been added to the database with aadhar Id : "+ lInsertedIndex;
+            log.info("<1 Aadhaar Registration Post URL");
             model.addAttribute("message", message);
             return new ModelAndView("index", message, model);
         }else{
             String message = "Failed to insert new user";
-            log.info("< Aadhaar Registration Post URL");
+            log.info("<1Aadhaar Registration Post URL");
             model.addAttribute("message", message);
             return new ModelAndView("index", message, model);
         }
     }
 
-    private boolean addUserToDatabase(User aInUserDetails) {
+    private Integer addUserToDatabase(User aInUserDetails) {
         MMMCogentCSD200DeviceImpl aInDevice = new MMMCogentCSD200DeviceImpl();
 
         //Calling Util Method to capture the fingerPrint
@@ -102,6 +101,7 @@ public class AadhaarController {
                 if(rs.next()) {
                     value = rs.getInt(1);
                     log.debug("The primary key is:"+value);
+                    return value;
                 }
             } catch (SQLException e) {
                 log.error("Cannot connect the database!", e);
@@ -115,13 +115,14 @@ public class AadhaarController {
                         connection.close();
                     } catch (SQLException e) {
                         log.error("Cannot close the connection!", e);
+                        return 0;
                     }
                 }
+                return 0;
             }
-            return true;
         }else{
             log.error("User not Added since fingerPrint was not captured properly");
-            return false;
+            return 0;
         }
     }
 

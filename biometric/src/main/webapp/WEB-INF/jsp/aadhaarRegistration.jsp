@@ -58,8 +58,14 @@
     </div>
 
 
-	<div id="headerwrap">
+	<div id="aadharwrap">
 	    <div class="container">
+		    <div class="row">
+			    <div class="col-lg-6 col-lg-offset-3">
+				    <img src = "http://localhost:8080/biometric-1/resources/img/aadhaar.png" style="width:279px;height:143px;">
+				    <h5 style="color:#3b5998;font-size:30px;text-align:center;">Enter Aadhaar Details </h5>
+			    </div>
+			</div>
 			<div class="row">
 				<div class="col-lg-6 col-lg-offset-3">
 
@@ -100,7 +106,7 @@
 
 			</div><! --/row -->
 	    </div> <!-- /container -->
-	</div><! --/headerwrap -->
+	</div><! --/aadharwrap -->
 
 	<section id="works"></section>
 

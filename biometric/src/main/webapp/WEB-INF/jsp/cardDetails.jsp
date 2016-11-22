@@ -59,23 +59,41 @@
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-lg-offset-3">
-				         <h2>Hi ${userDetail.name} please select any of the below card</h2>
-                         <c:forEach var="arr" items="${userDetail.listCardDetails}">
-                             <table class="table table-bordered textfont">
-                                <tr>
-                                    <td> Card Number  </td>
-                                    <td> ${arr.cardNumber}</td>
-                                </tr>
-                                <tr>
-                                    <td> Name on the card </td>
-                                    <td> ${arr.nameOnCard}</td>
-                                </tr>
-                                <tr>
-                                    <td> Expire Date </td>
-                                    <td> ${arr.expiryDate}</td>
-                                </tr>
-                            </table>
-						</c:forEach>
+					<h2>Hi "${userDetail.name}" please select any of the below card</h2>
+					<form:form method="POST" action="/biometric-1/shop/payment" modelAttribute="userDetail" class="form-horizontal">
+					<div class="col-xs-9 col-xs-offset-2">
+						<table>
+	                         <c:forEach var="arr" items="${userDetail.listCardDetails}">
+		                         <tr>
+			                         <td>
+				                         <form:radiobutton name="card" path="name"/>
+			                         </td>
+			                         <td>
+			                             <table class="table table-bordered textfont">
+			                                <tr>
+			                                    <td> Card Number  </td>
+			                                    <td> ${arr.cardNumber}</td>
+			                                </tr>
+			                                <tr>
+			                                    <td> Name on the card </td>
+			                                    <td> ${arr.nameOnCard}</td>
+			                                </tr>
+			                                <tr>
+			                                    <td> Expire Date </td>
+			                                    <td> ${arr.expiryDate}</td>
+			                                </tr>
+			                            </table>
+			                         </td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-9 col-xs-offset-0">
+							<input type="submit" class="submit_buttom btn btn-mg" name ="shop" value="Shop"/>
+						</div>
+					</div>
+					</form:form>
 				</div>
 			</div><! --/row -->
 	    </div> <!-- /container -->

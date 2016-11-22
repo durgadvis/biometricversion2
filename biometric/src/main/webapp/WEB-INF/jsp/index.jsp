@@ -56,17 +56,18 @@
     </div>
 
 
-	<div id="headerwrap">
+	<div id="aadharwrap">
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-lg-offset-3 textfont">
-                    <h2> Hi Folks !!! Welcome to BIOMETRIC Based shopping </h2>
-                    <h2> Have a good Day :)</h2>
-                     ${message}
+					<h2> Hi Folks &#33; Welcome to BIOMETRIC based shopping<i class="fa fa-shopping-cart" style="font-size:24px"></i> </h2>
+					<h2> Redefining your shopping experience&#9786;</h2>
+					<img src = "http://localhost:8080/biometric-1/resources/img/thumb.png" style="width:125px;height:125px;"><br />
+					<h2>${message}</h2>
 				</div>
 			</div><! --/row -->
 	    </div> <!-- /container -->
-	</div><! --/headerwrap -->
+	</div><! --/aadharwrap -->
 	
 	<section id="works"></section>
 	

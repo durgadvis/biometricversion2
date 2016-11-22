@@ -62,6 +62,14 @@ public class AadharShopController {
         return model;
     }
 
+    @RequestMapping(value="/shop/payment", method= RequestMethod.POST)
+    public ModelAndView getPaymentPage(Model model){
+        log.trace("> Get Payment Page");
+        String message = "Welcome to Aadhaar Registration";
+        log.trace("< Get Payment Page");
+        return new ModelAndView("paymentPage", "message", message);
+    }
+
     private User findMatchingUser(MMMCogentCSD200DeviceImpl aInDevice, CapturedImageData aInReferenceData, BankNames aInBankName){
         String url = "jdbc:mysql://localhost:3306/biometric";
         String username = "root";
@@ -105,7 +113,7 @@ public class AadharShopController {
                         String lCardNumber = rsCard.getString("cardNumber");
                         String lNameOnCard = rsCard.getString("nameOnCard");
                         String lExpiryDate = rsCard.getString("expiryDate");
-                        lCardDetails.add(new CardDetails(lCardNumber, lNameOnCard, lExpiryDate));
+                        lCardDetails.add(new CardDetails(lNameOnCard, lCardNumber, lExpiryDate));
                         log.trace("Adding Card with Card Number:"+lCardNumber);
                     }
                     $RetMatchedUser.setListCardDetails(lCardDetails);
