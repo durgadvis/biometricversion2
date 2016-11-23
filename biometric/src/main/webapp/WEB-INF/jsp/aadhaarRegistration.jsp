@@ -113,7 +113,7 @@
 
 					</form:form>
 					<div id="gif" style="visibility: hidden;">
-						<span> Updating aadhar database.. </span>
+						<span> Scanning Your fingerprint and contacting Aadhar!!! </span>
 						<img src="/biometric-1/resources/img/loader.gif"  style="display: block; margin: 0 auto; width: 100px;">
 					</div>
 				</div>

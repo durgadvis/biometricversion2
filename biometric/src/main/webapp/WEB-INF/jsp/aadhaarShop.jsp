@@ -65,7 +65,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6 col-lg-offset-3">
-                <form:form method="GET" action="/biometric-1/shop/cardDetails" modelAttribute="userDetail" class="form-horizontal">
+                <form:form method="GET" action="/biometric-1/shop/cardDetails" id="shopForm" modelAttribute="userDetail" class="form-horizontal">
                     <div class="form-group">
                         <form:label path="bankName" class="control-label col-xs-4">Select Bank: </form:label>
                         <div class="col-xs-5">
@@ -85,6 +85,10 @@
                         </div>
                     </div>
                 </form:form>
+                <div id="gif" style="visibility: hidden;">
+                    <span> Contacting Aadhaar for Authentication and fetching card details !!! </span>
+                    <img src="/biometric-1/resources/img/loader.gif"  style="display: block; margin: 0 auto; width: 100px;">
+                </div>
             </div>
         </div><! --/row -->
     </div> <!-- /container -->

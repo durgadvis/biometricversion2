@@ -60,6 +60,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-3 textfont">
+				<img src="/biometric-1/resources/img/loader.gif"  style="display: block; margin: 0 auto; width: 100px;">
 				<h2> Thanks You, The card chosen will be used for shopping .<br />Will now procced to payment gateway......</h2>
 			</div>
 		</div><! --/row -->

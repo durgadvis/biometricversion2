@@ -41,6 +41,8 @@ $(document).ready(function () {
 					},phone: {
 						country: "IN",
 						message: 'The value is not valid %s phone number'
+					},integer: {
+						message: 'Only Digits Allowed'
 					}
 				}
 			},
@@ -72,6 +74,8 @@ $(document).ready(function () {
 						min: 2,
 						max: 100,
 						message: 'Not valid age'
+					},integer: {
+						message: 'Only Digits Allowed'
 					}
 				}
 			}
@@ -95,6 +99,8 @@ $(document).ready(function () {
 				validators: {
 					notEmpty: {
 						message: 'Aadhar Number is required'
+					},integer: {
+						message: 'Only Digits Allowed'
 					}
 				}
 			},
@@ -102,6 +108,8 @@ $(document).ready(function () {
 				validators: {
 					notEmpty: {
 						message: 'Card Number is required'
+					},integer: {
+						message: 'Only Digits Allowed'
 					}
 				}
 			},
@@ -122,6 +130,8 @@ $(document).ready(function () {
 				validators: {
 					notEmpty: {
 						message: 'Card Number is required'
+					},integer: {
+						message: 'Only Digits Allowed'
 					}
 				}
 			},
@@ -143,6 +153,8 @@ $(document).ready(function () {
 				validators: {
 					notEmpty: {
 						message: 'Card Number is required'
+					},integer: {
+						message: 'Only Digits Allowed'
 					}
 				}
 			},
@@ -185,10 +197,20 @@ $(document).ready(function () {
 	 });*/
 	
 	
-	 $('#aadhaarRegistrationForm').submit(function() {
+	$('#aadhaarRegistrationForm').submit(function() {
 		 	$('#gif').css('visibility', 'visible'); 
 	        return true;
-	    });
+	});
+	
+	$('#bankRegistrationForm').submit(function() {
+		$('#gif').css('visibility', 'visible');
+		return true;
+	});
+	
+	$('#shopForm').submit(function() {
+		$('#gif').css('visibility', 'visible');
+		return true;
+	});
 	
 	
 	var rowcount=0;

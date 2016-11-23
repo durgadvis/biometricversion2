@@ -115,7 +115,7 @@
 								    <div class="form-group">
 									    <form:label path="listCardDetails[0].expiryDate" class="control-label col-xs-5">Expire Date:</form:label>
 									    <div class="col-xs-7">
-										    <form:input path="listCardDetails[0].expiryDate"  class="form-control" name="expiryDate"/>
+										    <form:input path="listCardDetails[0].expiryDate"  class="form-control" name="expiryDate" placeholder="MM/DD"/>
 									    </div>
 								    </div>
 							    </td>
@@ -133,6 +133,10 @@
 						    </div>
 					    </div>
 				    </form:form>
+				    <div id="gif" style="visibility: hidden;">
+					    <span> Updating Bank Database with Aadhaar info !!! </span>
+					    <img src="/biometric-1/resources/img/loader.gif"  style="display: block; margin: 0 auto; width: 100px;">
+				    </div>
 			    </div>
 	        </div><! --/row -->
 	    </div> <!-- /container -->
