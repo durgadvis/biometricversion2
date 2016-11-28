@@ -9,6 +9,7 @@ import mmm.cogent.fpCaptureApi.CapturedImageData;
 import mmm.cogent.fpCaptureApi.MMMCogentCSD200DeviceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.sql.DataSource;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +31,9 @@ import java.sql.SQLException;
 public class AadhaarController {
 
     private static final Logger log = LoggerFactory.getLogger(AadhaarController.class);
+
+    @Autowired
+    DataSource dataSource;
 
     @RequestMapping(value = "/registration/aadhaar", method = RequestMethod.GET)
     public ModelAndView aadhaarRegistrationGet(Model model) {
@@ -66,18 +71,14 @@ public class AadhaarController {
         log.trace("Adding new user to database");
         if(lCapturedImage != null && lIsoDb != null){
             //if(aInUserDetails != null && aInUserDetails.getFgIso()!=null ){
-            String url = "jdbc:mysql://localhost:3306/biometric";
-            String username = "root";
-            String password = "admin";
-
-            log.trace("Connecting database...");
+            log.trace("Connecting database d...");
             java.sql.Connection connection = null;
             int $RetValue =0;
 
             try{
                 Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection(url, username, password);
-                log.trace("Database connected!");
+                connection = dataSource.getConnection();
+                log.trace("Database connected using spring datasource!");
 
                 String query = " insert into userdetails (name, phoneNumber, emailId, address , age, fpIso, fbBmpImage)"
                         + " values (?, ?, ?, ?, ?, ?, ?)";

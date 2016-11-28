@@ -10,6 +10,7 @@ package com.biometric.controller;
         import mmm.cogent.fpCaptureApi.MMMCogentCSD200DeviceImpl;
         import org.slf4j.Logger;
         import org.slf4j.LoggerFactory;
+        import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Controller;
         import org.springframework.ui.Model;
         import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +18,7 @@ package com.biometric.controller;
         import org.springframework.web.bind.annotation.RequestMethod;
         import org.springframework.web.servlet.ModelAndView;
 
+        import javax.sql.DataSource;
         import java.sql.*;
         import java.util.ArrayList;
         import java.util.Arrays;
@@ -28,6 +30,9 @@ package com.biometric.controller;
 @Controller
 public class AadharShopController {
     private static final Logger log = LoggerFactory.getLogger(AadharShopController.class);
+
+    @Autowired
+    DataSource dataSource;
 
     @RequestMapping(value="/shop/aadhaar", method= RequestMethod.GET)
     public ModelAndView getShopPage(Model model){
@@ -77,9 +82,6 @@ public class AadharShopController {
     }
 
     private User findMatchingUser(MMMCogentCSD200DeviceImpl aInDevice, CapturedImageData aInReferenceData, BankNames aInBankName){
-        String url = "jdbc:mysql://localhost:3306/biometric";
-        String username = "root";
-        String password = "admin";
 
         log.trace("Connecting database...");
         java.sql.Connection connection = null;
@@ -87,8 +89,8 @@ public class AadharShopController {
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, username, password);
-            log.trace("Database connected!");
+            connection = dataSource.getConnection();
+            log.trace("Database connected using spring datasource!");
 
             String query = " SELECT * FROM userdetails";
 

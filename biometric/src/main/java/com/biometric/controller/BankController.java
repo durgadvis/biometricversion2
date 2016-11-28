@@ -8,6 +8,7 @@ import mmm.cogent.fpCaptureApi.CapturedImageData;
 import mmm.cogent.fpCaptureApi.MMMCogentCSD200DeviceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.sql.DataSource;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +31,9 @@ import java.util.List;
 @Controller
 public class BankController {
     private static final Logger log = LoggerFactory.getLogger(BankController.class);
+
+    @Autowired
+    DataSource dataSource;
 
     @RequestMapping(value = "/registration/bank", method = RequestMethod.GET)
     public ModelAndView aadhaarRegistrationGet(Model model) {
@@ -61,17 +66,13 @@ public class BankController {
     private boolean addCardToDatabase(User aInUserDetails) {
         log.trace("Adding card details to database");
         if(aInUserDetails != null){
-            String url = "jdbc:mysql://localhost:3306/biometric";
-            String username = "root";
-            String password = "admin";
-
             log.trace("Connecting database...");
             java.sql.Connection connection = null;
 
             try{
                 Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection(url, username, password);
-                log.trace("Database connected!");
+                connection = dataSource.getConnection();
+                log.trace("Database connected using spring datasource!");
                 int lPrimaryKey = aInUserDetails.getPk();
 
                 for(CardDetails lCardDetails : aInUserDetails.getListCardDetails()){
