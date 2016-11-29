@@ -63,7 +63,7 @@
 					<h2> Hi Folks &#33; Welcome to BIOMETRIC based shopping<i class="fa fa-shopping-cart" style="font-size:24px"></i> </h2>
 					<h2> Redefining your shopping experience&#9786;</h2>
 					<img src = "http://localhost:8080/biometric-1/resources/img/thumb.png" style="width:125px;height:125px;"><br />
-					<h2>${message}</h2>
+					<h2 class="blink_me">${message}</h2>
 				</div>
 			</div><! --/row -->
 	    </div> <!-- /container -->

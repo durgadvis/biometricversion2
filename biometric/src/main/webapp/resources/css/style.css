@@ -319,3 +319,11 @@ label{
     padding: 10px;
     margin-top: 39px;
 }
+
+.blink_me {
+	animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+	50% { opacity: 0; }
+}
