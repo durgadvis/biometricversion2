@@ -7,7 +7,22 @@
         </encoder>
     </appender>
 
+    <appender name="fileAppenderHibernate" class="ch.qos.logback.core.FileAppender">
+        <file>c:/Project_bio/Project/logs/hibernate.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d [%thread] %-5level  %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.hibernate.type" additivity="false" level="TRACE">
+        <appender-ref ref="fileAppenderHibernate" />
+    </logger>
+    <logger name="org.hibernate" additivity="false" level="TRACE" >
+        <appender-ref ref="fileAppenderHibernate" />
+    </logger>
+
     <root level="TRACE">
-        <appender-ref ref="fileAppender" />
+            <appender-ref ref="fileAppender" />
     </root>
 </configuration>

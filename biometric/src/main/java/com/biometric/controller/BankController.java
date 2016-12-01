@@ -1,5 +1,6 @@
 package com.biometric.controller;
 
+import com.biometric.Service.UserService;
 import com.biometric.forms.CardDetails;
 import com.biometric.forms.User;
 import com.biometric.util.BankNames;
@@ -35,6 +36,9 @@ public class BankController {
     @Autowired
     DataSource dataSource;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/registration/bank", method = RequestMethod.GET)
     public ModelAndView aadhaarRegistrationGet(Model model) {
         log.info("Bank URL");
@@ -48,7 +52,8 @@ public class BankController {
     @RequestMapping(value = "/registration/bank", method = RequestMethod.POST)
     public ModelAndView aadhaarRegistrationPost(@ModelAttribute("userDetail") User userDetails, Model model) {
         log.info("> Bank Registration Post URL: "+userDetails.getBankName().getName());
-        boolean lIsInserted = addCardToDatabase(userDetails);
+        //boolean lIsInserted = addCardToDatabase(userDetails);
+        boolean lIsInserted = addCardToDatabaseUsingHibernate(userDetails);
 
         if(lIsInserted){
             String message = "Card Details added";
@@ -111,5 +116,21 @@ public class BankController {
             log.error("Card details not added to database since no data received");
             return false;
         }
+    }
+
+    private boolean addCardToDatabaseUsingHibernate(User aInUserDetails) {
+        log.trace("Adding card details to database using hibernate");
+        if(aInUserDetails != null){
+            BankNames lBankName = aInUserDetails.getBankName();
+
+            //Prepopulate the required values which are default.
+            for(CardDetails lCardDetails :aInUserDetails.getListCardDetails()){
+                lCardDetails.setBankName(lBankName);
+                lCardDetails.setCvv(1);
+            }
+            log.trace("Connecting database through hibernate...");
+            return  userService.addBankDetails(aInUserDetails);
+        }
+        return false;
     }
 }

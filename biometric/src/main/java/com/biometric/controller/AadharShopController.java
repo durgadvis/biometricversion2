@@ -1,5 +1,6 @@
 package com.biometric.controller;
 
+        import com.biometric.Service.UserService;
         import com.biometric.forms.CardDetails;
         import com.biometric.forms.User;
         import com.biometric.util.BankNames;
@@ -34,6 +35,9 @@ public class AadharShopController {
     @Autowired
     DataSource dataSource;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value="/shop/aadhaar", method= RequestMethod.GET)
     public ModelAndView getShopPage(Model model){
         log.trace("> Shop Aadhaar URL");
@@ -51,7 +55,8 @@ public class AadharShopController {
         MMMCogentCSD200DeviceImpl aInDevice = new MMMCogentCSD200DeviceImpl();
         CapturedImageData lCapturedImage  = Util.captureFingerPrint(true, aInDevice);
         BankNames lBankName = userDetails.getBankName();
-        User lMatchedUser = findMatchingUser(aInDevice, lCapturedImage, lBankName);
+        //User lMatchedUser = findMatchingUser(aInDevice, lCapturedImage, lBankName);
+        User lMatchedUser = findMatchingUserUsingHibernate(aInDevice, lCapturedImage, lBankName);
 
         if(lMatchedUser != null){
             if(lMatchedUser.getListCardDetails() != null && lMatchedUser.getListCardDetails().size() > 0){
@@ -163,4 +168,9 @@ public class AadharShopController {
         $retUser.setName(aInRs.getString("name"));
         return $retUser;
     }
+
+    private User findMatchingUserUsingHibernate(MMMCogentCSD200DeviceImpl aInDevice, CapturedImageData aInReferenceData, BankNames aInBankName){
+        return  userService.findUserOfBank(aInDevice, aInReferenceData, aInBankName);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.biometric.controller;
 
+import com.biometric.Service.UserService;
 import com.biometric.forms.CardDetails;
 import com.biometric.forms.User;
 import com.biometric.util.FingerPrintDetails;
@@ -35,6 +36,9 @@ public class AadhaarController {
     @Autowired
     DataSource dataSource;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/registration/aadhaar", method = RequestMethod.GET)
     public ModelAndView aadhaarRegistrationGet(Model model) {
         log.info("NewUser URL");
@@ -46,7 +50,7 @@ public class AadhaarController {
     @RequestMapping(value = "/registration/aadhaar", method = RequestMethod.POST)
     public ModelAndView aadhaarRegistrationPost(@ModelAttribute("userDetail") User userDetails, Model model) {
         log.info("> Aadhaar Registration Post URL");
-        Integer lInsertedIndex = addUserToDatabase(userDetails);
+        Integer lInsertedIndex = addUserToDatabaseUsingHibernate(userDetails);
         if(lInsertedIndex != 0){
             String message = "New User has been added to the database with Aadhaar Id : "+ lInsertedIndex;
             log.info("< Aadhaar Registration Post URL");
@@ -121,6 +125,28 @@ public class AadhaarController {
                 }
                 return $RetValue;
             }
+        }else{
+            log.error("User not Added since fingerPrint was not captured properly");
+            return 0;
+        }
+    }
+
+    private Integer addUserToDatabaseUsingHibernate(User aInUserDetails) {
+        MMMCogentCSD200DeviceImpl aInDevice = new MMMCogentCSD200DeviceImpl();
+
+        //Calling Util Method to capture the fingerPrint
+        CapturedImageData lCapturedImage  = Util.captureFingerPrint(true, aInDevice);
+        byte[] lIsoDb = lCapturedImage.getIso19794_2Template();
+        byte[] lBmp = lCapturedImage.getBmpImageData();
+
+        log.trace("Adding new user to database using hibernate");
+        if(lCapturedImage != null && lIsoDb != null){
+            //if(aInUserDetails != null && aInUserDetails.getFgIso()!=null ){
+            log.trace("Connecting database Hibernate...");
+            aInUserDetails.setFgBmp(lBmp);
+            aInUserDetails.setFgIso(lIsoDb);
+            userService.addUserToDb(aInUserDetails);
+            return aInUserDetails.getPk();
         }else{
             log.error("User not Added since fingerPrint was not captured properly");
             return 0;
