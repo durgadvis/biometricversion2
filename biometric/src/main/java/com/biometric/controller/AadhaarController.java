@@ -41,9 +41,10 @@ public class AadhaarController {
 
     @RequestMapping(value = "/registration/aadhaar", method = RequestMethod.GET)
     public ModelAndView aadhaarRegistrationGet(Model model) {
-        log.info("NewUser URL");
+        log.info("> NewUser Aaadhar URL");
         String message = "Welcome to Aadhaar Registration";
         model.addAttribute("userDetail", new User());
+        log.info("< NewUser Aaadhar URL");
         return new ModelAndView("aadhaarRegistration", "message", message);
     }
 

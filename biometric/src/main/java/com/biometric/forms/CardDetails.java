@@ -37,6 +37,10 @@ public class CardDetails implements Serializable{
     @Transient
     private int fk;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ID")
+    private User user;
+
     public CardDetails(String aInNameOnCard, String aInCardNumber, int aInCvv, String aInExpiryDate, BankNames aInBankName, int aInFk){
         this.nameOnCard =aInNameOnCard;
         this.cardNumber =aInCardNumber;
@@ -111,5 +115,13 @@ public class CardDetails implements Serializable{
 
     public void setBankName(BankNames bankName) {
         this.bankName = bankName;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

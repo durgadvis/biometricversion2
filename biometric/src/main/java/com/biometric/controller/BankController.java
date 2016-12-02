@@ -40,7 +40,7 @@ public class BankController {
     UserService userService;
 
     @RequestMapping(value = "/registration/bank", method = RequestMethod.GET)
-    public ModelAndView aadhaarRegistrationGet(Model model) {
+    public ModelAndView bankRegistrationGet(Model model) {
         log.info("Bank URL");
         String message = "Welcome to Aadhaar Registration";
         model.addAttribute("userDetail", new User());
@@ -50,7 +50,7 @@ public class BankController {
     }
 
     @RequestMapping(value = "/registration/bank", method = RequestMethod.POST)
-    public ModelAndView aadhaarRegistrationPost(@ModelAttribute("userDetail") User userDetails, Model model) {
+    public ModelAndView bankRegistrationPost(@ModelAttribute("userDetail") User userDetails, Model model) {
         log.info("> Bank Registration Post URL: "+userDetails.getBankName().getName());
         //boolean lIsInserted = addCardToDatabase(userDetails);
         boolean lIsInserted = addCardToDatabaseUsingHibernate(userDetails);

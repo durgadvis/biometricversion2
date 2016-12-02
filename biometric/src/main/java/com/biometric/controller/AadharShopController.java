@@ -4,9 +4,7 @@ package com.biometric.controller;
         import com.biometric.forms.CardDetails;
         import com.biometric.forms.User;
         import com.biometric.util.BankNames;
-        import com.biometric.util.FingerPrintDetails;
         import com.biometric.util.Util;
-        import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
         import mmm.cogent.fpCaptureApi.CapturedImageData;
         import mmm.cogent.fpCaptureApi.MMMCogentCSD200DeviceImpl;
         import org.slf4j.Logger;
@@ -21,9 +19,7 @@ package com.biometric.controller;
 
         import javax.sql.DataSource;
         import java.sql.*;
-        import java.util.ArrayList;
-        import java.util.Arrays;
-        import java.util.List;
+        import java.util.*;
 
 /**
  * Created by suvp on 11/15/2016.
@@ -120,7 +116,7 @@ public class AadharShopController {
                     query = "select card.cardNumber, card.nameOnCard, card.expiryDate, user.pk, user.name from biometric.userdetails as user , biometric.carddetails as card where user.pk=card.fk and user.pk="+$RetMatchedUser.getPk()+" and card.bankName=\""+aInBankName.getName()+"\"";
                     log.trace("Executing the query:"+query);
                     ResultSet rsCard = lStatement.executeQuery(query);
-                    List<CardDetails> lCardDetails = new ArrayList<>();
+                    List<CardDetails> lCardDetails = new LinkedList<>();
                     while (rsCard.next())
                     {
                         String lCardNumber = rsCard.getString("cardNumber");

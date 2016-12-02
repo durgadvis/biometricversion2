@@ -1,7 +1,6 @@
 package com.biometric.Service;
 
 import com.biometric.Dao.UserDao;
-import com.biometric.controller.AadhaarController;
 import com.biometric.forms.CardDetails;
 import com.biometric.forms.User;
 import com.biometric.util.BankNames;
@@ -13,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,6 +33,9 @@ public class UserService {
     public boolean addBankDetails(User aInUser){
         User lDbUser = dao.findUser(aInUser);
         if(lDbUser != null){
+            for(CardDetails lCardDetails :aInUser.getListCardDetails()){
+                lCardDetails.setUser(lDbUser);
+            }
             lDbUser.getListCardDetails().addAll(aInUser.getListCardDetails());
             dao.updateUser(lDbUser);
             return true;

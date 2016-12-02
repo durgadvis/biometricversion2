@@ -1,7 +1,6 @@
 package com.biometric.forms;
 
 import com.biometric.util.BankNames;
-import org.hibernate.type.BlobType;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -39,7 +38,7 @@ public class User implements Serializable{
     private BankNames bankName;
 
     //In model to retrieve the selected card.
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy ="user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CardDetails> listCardDetails;
 
     @Id
