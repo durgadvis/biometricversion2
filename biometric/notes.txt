@@ -1,0 +1,68 @@
+User Details schema:
+
+CREATE TABLE `biometric`.`userdetails` (
+  `pk` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `phoneNumber` BIGINT(10) NOT NULL,
+  `emailId` VARCHAR(45) NULL,
+  `address` VARCHAR(45) NULL,
+  `age` INT(100) NULL,
+  `fpIso` BLOB NOT NULL,
+  `fbBmpImage` LONGBLOB NOT NULL,
+  UNIQUE INDEX `pk_UNIQUE` (`pk` ASC),
+  PRIMARY KEY (`pk`));
+  
+Card Details Schema:
+  CREATE TABLE `biometric`.`carddetails` (
+  `pk` INT NOT NULL AUTO_INCREMENT,
+  `nameOnCard` VARCHAR(45) NOT NULL,
+  `cardNumber` VARCHAR(16) NOT NULL,
+  `cvv` INT(3) NOT NULL,
+  `expiryDate` VARCHAR(6) NULL,
+  `fk` INT NOT NULL,
+  PRIMARY KEY (`pk`),
+  UNIQUE INDEX `pk_UNIQUE` (`pk` ASC),
+  INDEX `userPk_idx` (`fk` ASC),
+  CONSTRAINT `userPk`
+    FOREIGN KEY (`fk`)
+    REFERENCES `biometric`.`userdetails` (`pk`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+	
+	
+Model Sql Statements:
+
+select * from biometric.userdetails;
+select * from biometric.carddetails;
+delete from biometric.userdetails where pk = 16;
+
+
+Mvn Commands:
+mvn install:install-file -Dfile=libs/commons-codec-1.4.jar -DgroupId=myLibs -DartifactId=commons-codec -Dversion=1.4 -Dpackaging=jar
+mvn install:install-file -Dfile=libs/CgtFpAccess-CSD200-Java-1.1.jar -DgroupId=myLibs  -DartifactId=fpAccess -Dversion=1.1 -Dpackaging=jar
+
+Image tag in main xml:
+<img ng-src="data:image/JPEG;base64,{{myImage}}">
+
+Links:
+http://stackoverflow.com/questions/34560229/convert-byte-to-image-and-display-on-jsp
+
+
+Image related notes:
+BufferedImage img = ImageIO.read(new ByteArrayInputStream(bytes));
+ImageIO.write(bufferedImage, "jpg", outputfile);
+
+
+Add items to model dynamically to model:
+http://outbottle.com/spring-3-mvc-adding-objects-to-a-list-element-on-the-fly-at-form-submit-generic-method/
+
+
+Mysql statements to generate log
+show variables like '%general%';
+SET GLOBAL general_log_file = 'C:/Project_bio/Project/logs/mysql.log'
+SET GLOBAL general_log = 'ON';
+
+Add this xml file in the tomcat conf/engine/localhost/ for loading the app from the target folder:
+biometric-1.xml:
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase="C:\Project_bio\Project\biometricV3\biometricversion2\biometric\target\biometric-1"  />
