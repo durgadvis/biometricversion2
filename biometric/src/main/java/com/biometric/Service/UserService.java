@@ -31,11 +31,11 @@ public class UserService {
     }
 
     public boolean addBankDetails(User aInUser){
-        User lDbUser = dao.findUser(aInUser);
+        final User lDbUser = dao.findUser(aInUser);
         if(lDbUser != null){
-            for(CardDetails lCardDetails :aInUser.getListCardDetails()){
-                lCardDetails.setUser(lDbUser);
-            }
+
+            aInUser.getListCardDetails().forEach(cardDetails -> cardDetails.setUser(lDbUser));
+
             lDbUser.getListCardDetails().addAll(aInUser.getListCardDetails());
             dao.updateUser(lDbUser);
             return true;
