@@ -5,6 +5,7 @@ import com.biometric.forms.CardDetails;
 import com.biometric.forms.User;
 import com.biometric.util.BankNames;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.CriteriaSpecification;
@@ -57,10 +58,23 @@ public class UserDao {
         c.add(Restrictions.eq("card.bankName", aInBankName));
         c.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);*/
 
-        Criteria crit = getSession().createCriteria(User.class);
+        /*Criteria crit = getSession().createCriteria(User.class);
         crit.add(Restrictions.eq("pk",aInUser.getPk()));
         Criteria cardCriteria = crit.createCriteria("listCardDetails");
-        cardCriteria.add(Restrictions.eq("bankName", aInBankName));
+        cardCriteria.add(Restrictions.eq("bankName", BankNames.CORPORATION));
+        cardCriteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
+        return  (User)crit.uniqueResult();*/
+
+        Criteria crit = getSession().createCriteria(User.class, "user");
+        crit.createAlias("user.listCardDetails", "card");
+        crit.add(Restrictions.eq("pk",aInUser.getPk()));
+        crit.add(Restrictions.eq("card.bankName", aInBankName));
+        crit.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
         return  (User)crit.uniqueResult();
+
+/*        String hql = "from User p where p.pk ="+aInUser.getPk()+" and  CardDetails.bankName =" +aInBankName.name();
+
+        Query query = getSession().createQuery(hql);
+        return (User) query.uniqueResult();*/
     }
 }

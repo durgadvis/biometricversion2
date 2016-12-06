@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Created by suvp on 11/7/2016.
  */
 @Entity
-@Table(name = "carddetails1")
+@Table(name = "carddetailsHibernate")
 public class CardDetails implements Serializable{
 
     @Id

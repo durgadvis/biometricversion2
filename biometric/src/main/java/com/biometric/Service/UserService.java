@@ -45,7 +45,7 @@ public class UserService {
         }
     }
 
-    public User findUserOfBank(MMMCogentCSD200DeviceImpl aInDevice, CapturedImageData aInReferenceData, BankNames aInBankName){
+    public User findUserOfBank(MMMCogentCSD200DeviceImpl aInDevice, CapturedImageData aInReferenceData, final BankNames aInBankName){
         List<User> lListOfUser = dao.findAllUser();
         byte[] lInputFingerPrint = aInReferenceData.getIso19794_2Template();
         User lMatchedUser = null;
@@ -61,7 +61,14 @@ public class UserService {
 
         if(lMatchedUser != null){
             log.debug("User Found with Name: "+lMatchedUser.getName());
-            return dao.findUserOnBankDetails(lMatchedUser, aInBankName);
+            User lUser =  dao.findUserOnBankDetails(lMatchedUser, aInBankName);
+            //Remove not valid cards using lamda expression since HQL is not proper .TOTO have to correct it.
+            if(lUser != null){
+                lUser.getListCardDetails().removeIf(cardDetails -> cardDetails.getBankName()!= aInBankName);
+            }else{
+                log.error("User Not Validated !! Please try again");
+            }
+            return  lUser;
         }else{
             log.error("Failed to find corresponding user in Database");
             return null;

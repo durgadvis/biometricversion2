@@ -10,7 +10,7 @@ import java.util.List;
  * Created by suvp on 11/7/2016.
  */
 @Entity
-@Table(name = "userdetails1")
+@Table(name = "userdetailsHibernate")
 public class User implements Serializable{
 
     @Column(length = 45, nullable = false)
