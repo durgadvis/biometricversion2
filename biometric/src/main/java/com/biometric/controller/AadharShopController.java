@@ -88,6 +88,14 @@ public class AadharShopController {
         return new ModelAndView("paymentPage", "message", message);
     }
 
+    @RequestMapping(value = "/shop/confirm", method = RequestMethod.GET)
+    public ModelAndView confirmPage(Model model) {
+        log.info("Main URL");
+        return new ModelAndView("paymentConfirm");
+    }
+
+
+
     private User findMatchingUser(MMMCogentCSD200DeviceImpl aInDevice, CapturedImageData aInReferenceData, BankNames aInBankName){
 
         log.trace("Connecting database...");

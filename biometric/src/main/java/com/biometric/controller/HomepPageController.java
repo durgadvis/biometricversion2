@@ -17,5 +17,4 @@ public class HomepPageController {
         log.info("Main URL");
         return new ModelAndView("index");
     }
-
 }

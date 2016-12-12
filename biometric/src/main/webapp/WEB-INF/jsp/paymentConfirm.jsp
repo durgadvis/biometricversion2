@@ -55,19 +55,11 @@
 	</div>
 </div>
 
-<script>
-	setTimeout(function(){
-		window.location.href="http://localhost:8080/biometric-1/shop/confirm"; // The URL that will be redirected too.
-	}, 15000);
-</script>
-
-
 <div id="headerwrap">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-3 textfont">
-				<img src="/biometric-1/resources/img/loader.gif"  style="display: block; margin: 0 auto; width: 100px;">
-				<h2> Thanks You, The card chosen will be used for shopping .<br />Will now procced to payment gateway......</h2>
+				<h2 class="blink_me"> Payment of RS 200 was sucessfull.<br> Thanks For shopping . <br> Please visit again</h2>
 			</div>
 		</div><! --/row -->
 	</div> <!-- /container -->
@@ -126,6 +118,5 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-<script src="<c:url value="/resources/js/biometric.home.js"/>"></script>
 </body>
 </html>
