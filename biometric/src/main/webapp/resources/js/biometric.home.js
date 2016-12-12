@@ -175,6 +175,35 @@ $(document).ready(function () {
 		}
 	});
 	
+	$('#pinFormValidation').formValidation({
+		framework: 'bootstrap',
+		icon: {
+			valid: 'glyphicon glyphicon-ok',
+			invalid: 'glyphicon glyphicon-remove',
+			validating: 'glyphicon glyphicon-refresh'
+		},
+		err: {
+			// You can set it to popover
+			// The message then will be shown in Bootstrap popover
+			container: 'tooltip'
+		},
+		fields: {
+			tpin: {
+				validators: {
+					notEmpty: {
+						message: 'Tpin is required'
+					}, stringLength:{
+						min:4,
+						max:4,
+						message:"4 digit number"
+					},integer: {
+						message: 'Only Digits Allowed'
+					}
+				}
+			}
+		}
+	});
+	
 	
 	
 	/*	$("#fingerscanner").click(function(e) {

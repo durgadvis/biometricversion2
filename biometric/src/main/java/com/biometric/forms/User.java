@@ -14,7 +14,7 @@ public class User implements Serializable{
     private Long phonenumber ;
     private String emailId;
     private String address;
-    private int age;
+    private Integer age;
     private byte[] fgIso;
     private byte[] fgBmp;
 
@@ -22,6 +22,8 @@ public class User implements Serializable{
 
     //In model to retrieve the selected card.
     private List<CardDetails> listCardDetails;
+
+    private Integer tpin;
 
     private int pk;
 
@@ -77,11 +79,11 @@ public class User implements Serializable{
         this.address = address;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -117,5 +119,11 @@ public class User implements Serializable{
         this.bankName = bankName;
     }
 
+    public Integer getTpin() {
+        return tpin;
+    }
 
+    public void setTpin(Integer tpin) {
+        this.tpin = tpin;
+    }
 }

@@ -3,9 +3,7 @@ package com.biometric.controller;
         import com.biometric.forms.CardDetails;
         import com.biometric.forms.User;
         import com.biometric.util.BankNames;
-        import com.biometric.util.FingerPrintDetails;
         import com.biometric.util.Util;
-        import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
         import mmm.cogent.fpCaptureApi.CapturedImageData;
         import mmm.cogent.fpCaptureApi.MMMCogentCSD200DeviceImpl;
         import org.slf4j.Logger;
@@ -75,6 +73,15 @@ public class AadharShopController {
 
     @RequestMapping(value="/shop/payment", method= RequestMethod.POST)
     public ModelAndView getPaymentPage(Model model){
+        log.trace("> Get Payment Page");
+        String message = "Welcome to Aadhaar Registration";
+        model.addAttribute("userDetail", new User());
+        log.trace("< Get Payment Page");
+        return new ModelAndView("pinPage", "message", model);
+    }
+
+    @RequestMapping(value="/shop/payment/confirm", method= RequestMethod.POST)
+    public ModelAndView getPaymentConfirmPage(Model model){
         log.trace("> Get Payment Page");
         String message = "Welcome to Aadhaar Registration";
         log.trace("< Get Payment Page");
