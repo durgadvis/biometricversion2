@@ -1,4 +1,4 @@
-# biometricversion
+# Biometricversion
 Welcome to the biometricversion wiki!
 We are here to "Redefine your shopping experience."
 
