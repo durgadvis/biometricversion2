@@ -101,7 +101,7 @@
     <div class="container">
         <div class="row centered">
             <div class="col-lg-2">
-                <a href="#"><i class="fa fa-dribbble"></i></a>
+                <a href="https://github.com/durgadvis/biometricversion2"><i class="fa fa-github"></i></a>
             </div>
             <div class="col-lg-2">
                 <a href="#"><i class="fa fa-facebook"></i></a>
