@@ -2,7 +2,7 @@
 Welcome to the biometricversion wiki!
 We are here to "Redefine your shopping experience."
 
-We are truly _ caschless, cardless / platicless_ , with our solution you just go to shop and use your Biometric to shop. Isn't it Coool!!!!!
+We are truly caschless, cardless / plasticless, with our solution you just go to shop and use your Biometric to shop. Isn't it Coool!!!!!
 
 We hereby propose an idea to use Aadhaar and part of existing bank infrastructure for fulfillment of our idea.
 With your cards and bank accounts linked to Aadhaar you can just proceed to Shop anytime using your biometric.
