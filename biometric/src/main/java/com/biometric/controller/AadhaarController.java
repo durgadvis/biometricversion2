@@ -72,12 +72,10 @@ public class AadhaarController {
         if(lCapturedImage != null && lIsoDb != null){
             //if(aInUserDetails != null && aInUserDetails.getFgIso()!=null ){
             log.trace("Connecting database d...");
-            java.sql.Connection connection = null;
             int $RetValue =0;
 
-            try{
+            try ( java.sql.Connection connection =  dataSource.getConnection()){
                 Class.forName("com.mysql.jdbc.Driver");
-                connection = dataSource.getConnection();
                 log.trace("Database connected using spring datasource!");
 
                 String query = " insert into userdetails (name, phoneNumber, emailId, address , age, fpIso, fbBmpImage)"
@@ -110,17 +108,9 @@ public class AadhaarController {
             } catch (ClassNotFoundException e) {
                 log.error("Class Class Exception in sql registration");
                 e.printStackTrace();
-            } finally {
-                if (connection != null) {
-                    try {
-                        connection.close();
-                    } catch (SQLException e) {
-                        log.error("Cannot close the connection!", e);
-                        return $RetValue;
-                    }
-                }
-                return $RetValue;
             }
+            log.error("User not Added since fingerPrint due to connection issues");
+            return 0;
         }else{
             log.error("User not Added since fingerPrint was not captured properly");
             return 0;

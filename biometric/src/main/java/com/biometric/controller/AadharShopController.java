@@ -99,12 +99,10 @@ public class AadharShopController {
     private User findMatchingUser(MMMCogentCSD200DeviceImpl aInDevice, CapturedImageData aInReferenceData, BankNames aInBankName){
 
         log.trace("Connecting database...");
-        java.sql.Connection connection = null;
         User $RetMatchedUser =null;
 
-        try{
+        try (java.sql.Connection connection = dataSource.getConnection()){
             Class.forName("com.mysql.jdbc.Driver");
-            connection = dataSource.getConnection();
             log.trace("Database connected using spring datasource!");
 
             String query = " SELECT * FROM userdetails";
@@ -151,14 +149,6 @@ public class AadharShopController {
         } catch (ClassNotFoundException e) {
             log.error("Class Class Exception in sql registration");
             e.printStackTrace();
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    log.error("Cannot close the connection error: " +e);
-                }
-            }
         }
 
         if($RetMatchedUser == null){

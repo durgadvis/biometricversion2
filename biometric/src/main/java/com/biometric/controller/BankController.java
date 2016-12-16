@@ -67,11 +67,9 @@ public class BankController {
         log.trace("Adding card details to database");
         if(aInUserDetails != null){
             log.trace("Connecting database...");
-            java.sql.Connection connection = null;
 
-            try{
+            try (java.sql.Connection connection = dataSource.getConnection()){
                 Class.forName("com.mysql.jdbc.Driver");
-                connection = dataSource.getConnection();
                 log.trace("Database connected using spring datasource!");
                 int lPrimaryKey = aInUserDetails.getPk();
 
@@ -97,14 +95,6 @@ public class BankController {
             } catch (ClassNotFoundException e) {
                 log.error("Class Class Exception in sql registration");
                 e.printStackTrace();
-            } finally {
-                if (connection != null) {
-                    try {
-                        connection.close();
-                    } catch (SQLException e) {
-                        log.error("Cannot close the connection!", e);
-                    }
-                }
             }
             return true;
         }else{
