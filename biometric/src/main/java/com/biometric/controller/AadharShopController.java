@@ -167,7 +167,7 @@ public class AadharShopController {
         return $RetMatchedUser;
     }
 
-    private User getMatchedUser(ResultSet aInRs) throws SQLException {
+    public static User getMatchedUser(ResultSet aInRs) throws SQLException {
         User $retUser= new User();
         $retUser.setName(aInRs.getString("name"));
         $retUser.setAddress(aInRs.getString("address"));
