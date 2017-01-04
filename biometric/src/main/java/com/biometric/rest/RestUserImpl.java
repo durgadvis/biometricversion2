@@ -9,16 +9,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.sql.DataSource;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by suvp on 1/3/2017.
@@ -118,7 +119,7 @@ public class RestUserImpl {
                     String lBankName = rsCard.getString("bankName");
 
                     CardDetails lDbCardDetails = new CardDetails(lNameOnCard, lCardNumber, lExpiryDate);
-                    lDbCardDetails.setBankName(BankNames.valueOf(lBankName));
+                    lDbCardDetails.setBankName(aInBankName);
                     lCardDetails.add(lDbCardDetails);
 
                     log.trace("Adding Card with Card Number:" + lCardNumber);
@@ -178,5 +179,45 @@ public class RestUserImpl {
             }
         }
         return  $RetObject;
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void postBankDetails(CardDetails[] aInBody){
+        log.trace("Received in post method");
+        java.sql.Connection connection = null;
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = dataSource.getConnection();
+            String query = " insert into carddetails (nameOnCard, cardNumber, cvv, expiryDate , bankName,  fk)"
+                    + " values (?, ?, ?, ?, ?, ?)";
+            for(int i=0; i< aInBody.length;i++) {
+                // create the mysql insert prepared statement
+                CardDetails lCardDetails = aInBody[i];
+                PreparedStatement preparedStmt = connection.prepareStatement(query, com.mysql.jdbc.Statement.RETURN_GENERATED_KEYS);
+                preparedStmt.setString(1, lCardDetails.getNameOnCard());
+                preparedStmt.setString(2, lCardDetails.getCardNumber());
+                preparedStmt.setInt(3, 1);
+                preparedStmt.setString(4, lCardDetails.getExpiryDate());
+                preparedStmt.setString(5, lCardDetails.getBankName().getName());
+                preparedStmt.setInt(6, lCardDetails.getFk());
+                preparedStmt.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e) {
+            log.error("Class Exception in sql registration");
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    log.error("Cannot close the connection error: " +e);
+                }
+            }
+        }
     }
 }
